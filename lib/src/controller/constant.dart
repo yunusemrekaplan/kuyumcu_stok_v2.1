@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 const goldTableCreateQuery = '''
       $createTableQuery $goldTableName (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,6 +41,3 @@ const goldTableName = 'gold_products';
 const entriesTableName = 'product_entries';
 const salesTableName = 'product_sales';
 const createTableQuery = 'CREATE TABLE IF NOT EXISTS';
-
-const snackBarErrorTextColor = Colors.white;
-const snackBarErrorBackgroundColor = Colors.red;

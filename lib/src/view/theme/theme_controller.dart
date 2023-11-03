@@ -18,6 +18,6 @@ class ThemeController extends GetxController {
       containerColor.value = secThemeContainerColor;
       Get.changeTheme(themeSec);
     }
-    update();
+    //update(); // TODO: update silmeyi deneyelim
   }
 }

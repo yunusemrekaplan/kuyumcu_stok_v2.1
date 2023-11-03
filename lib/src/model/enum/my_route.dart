@@ -1,0 +1,4 @@
+enum MyRoute {
+  home,
+  inventory,
+}

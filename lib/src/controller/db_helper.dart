@@ -21,7 +21,7 @@ class DbHelper {
 
   late Database _db;
 
-  Future<void> open() async {
+  Future<void> openDb() async {
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
     String dbPath = p.join(
       appDocumentsDir.path,

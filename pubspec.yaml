@@ -38,6 +38,8 @@ dependencies:
   sqflite_common_ffi: ^2.3.0+2
   get: ^4.6.6
   path_provider: ^2.1.1
+  window_manager: ^0.3.7
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
