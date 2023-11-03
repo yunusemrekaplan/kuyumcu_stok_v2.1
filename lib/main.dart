@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kuyumcu_stok_v2/src/controller/db_helper.dart';
 import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_my_route.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
 
+import 'src/controller/data/db_helper.dart';
 import 'src/model/enum/my_route.dart';
 import 'src/view/inventory/inventory_screen.dart';
+import 'src/view/search/search_screen.dart';
 import 'src/view/theme/theme_controller.dart';
 import 'src/view/theme/theme_first.dart';
 import 'src/view/theme/theme_sec.dart';
@@ -39,11 +40,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoute.inventory.stringDefinition,
+      initialRoute: MyRoute.search.stringDefinition,
       getPages: [
         GetPage(
             name: MyRoute.inventory.stringDefinition,
             page: () => InventoryScreen()),
+        GetPage(
+            name: MyRoute.search.stringDefinition, page: () => SearchScreen()),
       ],
       themeMode: ThemeMode.light,
       theme: themeFirst,

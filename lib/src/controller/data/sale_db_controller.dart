@@ -1,29 +1,29 @@
 import 'package:get/get.dart';
 
-import '../model/data/gold.dart';
+import '../../model/data/sale.dart';
 import 'constant.dart';
 import 'db_helper.dart';
 
-class GoldDbController {
-  static final GoldDbController _instance = GoldDbController._internal();
+class SaleDbController {
+  static final SaleDbController _instance = SaleDbController._internal();
 
-  factory GoldDbController() {
+  factory SaleDbController() {
     return _instance;
   }
 
-  GoldDbController._internal();
+  SaleDbController._internal();
 
   final _dbHelper = DbHelper();
-  RxList<Gold> golds = <Gold>[].obs;
+  RxList<Sale> sales = <Sale>[].obs;
 
   Future<bool> getAll() async {
-    List<Map<String, dynamic>>? result = await _dbHelper.getAll(goldTableName);
+    List<Map<String, dynamic>>? result = await _dbHelper.getAll(salesTableName);
 
     if (result == null) return false;
 
-    golds.value = result
+    sales.value = result
         .map(
-          (e) => Gold.fromJson(
+          (e) => Sale.fromJson(
             json: e,
             id: e['id'],
           ),
@@ -33,12 +33,12 @@ class GoldDbController {
   }
 
   Future<bool> add(Map<String, dynamic> data) async {
-    int? result = await _dbHelper.add(data, goldTableName);
+    int? result = await _dbHelper.add(data, salesTableName);
 
     if (result == null) return false;
 
-    golds.add(
-      Gold.fromJson(
+    sales.add(
+      Sale.fromJson(
         json: data,
         id: result,
       ),
@@ -47,11 +47,11 @@ class GoldDbController {
   }
 
   Future<bool> update(Map<String, dynamic> data, int id) async {
-    int? result = await _dbHelper.update(data, goldTableName, id);
+    int? result = await _dbHelper.update(data, salesTableName, id);
 
     if (result == null) return false;
 
-    golds[golds.indexWhere((element) => element.id == id)] = Gold.fromJson(
+    sales[sales.indexWhere((element) => element.id == id)] = Sale.fromJson(
       json: data,
       id: id,
     );
@@ -59,11 +59,11 @@ class GoldDbController {
   }
 
   Future<bool> delete(int id) async {
-    int? result = await _dbHelper.delete(goldTableName, id);
+    int? result = await _dbHelper.delete(salesTableName, id);
 
     if (result == null) return false;
 
-    golds.removeWhere((element) => element.id == id);
+    sales.removeWhere((element) => element.id == id);
     return true;
   }
 }

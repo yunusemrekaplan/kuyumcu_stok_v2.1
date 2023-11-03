@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constant.dart';
-import '../../controller/gold_db_controller.dart';
+import '../../controller/data/gold_db_controller.dart';
 import '../../model/data/gold.dart';
 import 'constant.dart';
 

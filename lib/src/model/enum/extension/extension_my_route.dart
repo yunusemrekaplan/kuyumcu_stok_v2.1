@@ -7,6 +7,8 @@ extension ToString on MyRoute {
         return '/home';
       case MyRoute.inventory:
         return '/inventory';
+      case MyRoute.search:
+        return '/search';
       default:
         return 'Unknown route';
     }

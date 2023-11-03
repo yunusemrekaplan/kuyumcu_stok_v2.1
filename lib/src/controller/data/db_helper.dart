@@ -7,7 +7,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../model/enum/log_state.dart';
+import '../../model/enum/log_state.dart';
 import 'constant.dart';
 
 class DbHelper {

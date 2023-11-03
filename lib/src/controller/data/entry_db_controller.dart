@@ -1,29 +1,30 @@
 import 'package:get/get.dart';
 
-import '../model/data/sale.dart';
+import '../../model/data/entry.dart';
 import 'constant.dart';
 import 'db_helper.dart';
 
-class SaleDbController {
-  static final SaleDbController _instance = SaleDbController._internal();
+class EntryDbController {
+  static final EntryDbController _instance = EntryDbController._internal();
 
-  factory SaleDbController() {
+  factory EntryDbController() {
     return _instance;
   }
 
-  SaleDbController._internal();
+  EntryDbController._internal();
 
   final _dbHelper = DbHelper();
-  RxList<Sale> sales = <Sale>[].obs;
+  RxList<Entry> entries = <Entry>[].obs;
 
   Future<bool> getAll() async {
-    List<Map<String, dynamic>>? result = await _dbHelper.getAll(salesTableName);
+    List<Map<String, dynamic>>? result =
+        await _dbHelper.getAll(entriesTableName);
 
     if (result == null) return false;
 
-    sales.value = result
+    entries.value = result
         .map(
-          (e) => Sale.fromJson(
+          (e) => Entry.fromJson(
             json: e,
             id: e['id'],
           ),
@@ -33,12 +34,12 @@ class SaleDbController {
   }
 
   Future<bool> add(Map<String, dynamic> data) async {
-    int? result = await _dbHelper.add(data, salesTableName);
+    int? result = await _dbHelper.add(data, entriesTableName);
 
     if (result == null) return false;
 
-    sales.add(
-      Sale.fromJson(
+    entries.add(
+      Entry.fromJson(
         json: data,
         id: result,
       ),
@@ -47,11 +48,11 @@ class SaleDbController {
   }
 
   Future<bool> update(Map<String, dynamic> data, int id) async {
-    int? result = await _dbHelper.update(data, salesTableName, id);
+    int? result = await _dbHelper.update(data, entriesTableName, id);
 
     if (result == null) return false;
 
-    sales[sales.indexWhere((element) => element.id == id)] = Sale.fromJson(
+    entries[entries.indexWhere((element) => element.id == id)] = Entry.fromJson(
       json: data,
       id: id,
     );
@@ -59,11 +60,11 @@ class SaleDbController {
   }
 
   Future<bool> delete(int id) async {
-    int? result = await _dbHelper.delete(salesTableName, id);
+    int? result = await _dbHelper.delete(entriesTableName, id);
 
     if (result == null) return false;
 
-    sales.removeWhere((element) => element.id == id);
+    entries.removeWhere((element) => element.id == id);
     return true;
   }
 }
