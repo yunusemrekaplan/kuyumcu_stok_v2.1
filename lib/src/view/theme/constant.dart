@@ -26,6 +26,8 @@ const TextStyle appBarTitleTextStyle = TextStyle(
   color: textColor,
   fontSize: appBarTitleSize,
 );
+
+const textStyle = TextStyle(color: textColor);
 const TextStyle buttonTextStyle = TextStyle(fontSize: buttonTextSize);
 const TextStyle tableHeadingTextStyle =
     TextStyle(color: textColor, fontSize: tableHeadingFontSize);

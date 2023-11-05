@@ -15,6 +15,8 @@ extension ToString on LogState {
         return 'Update data';
       case LogState.deleteData:
         return 'Delete data';
+      case LogState.getCurrenciesHakanAltin:
+        return 'Get currencies of Hakan Altın';
       default:
         return 'Unknown state';
     }

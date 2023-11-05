@@ -7,6 +7,21 @@ final themeFirst = ThemeData(
   elevatedButtonTheme: elevatedButtonThemeData(),
   dataTableTheme: dataTableThemeData(),
   scrollbarTheme: scrollbarThemeData(),
+  textTheme: const TextTheme(
+    displayLarge: textStyle,
+    displayMedium: textStyle,
+    displaySmall: textStyle,
+    headlineMedium: textStyle,
+    headlineSmall: textStyle,
+    titleLarge: textStyle,
+    titleMedium: textStyle,
+    titleSmall: textStyle,
+    bodyLarge: textStyle,
+    bodyMedium: textStyle,
+    labelLarge: buttonTextStyle,
+    bodySmall: textStyle,
+    labelSmall: textStyle,
+  ),
   scaffoldBackgroundColor: firstThemeScaffoldBackgroundColor,
 );
 

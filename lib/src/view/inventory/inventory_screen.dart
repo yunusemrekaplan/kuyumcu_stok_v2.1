@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../model/enum/my_route.dart';
 import '../theme/theme_controller.dart';
 import '../widget/my_app_bar.dart';
+import '../widget/my_drawer/my_drawer.dart';
 import 'constant.dart';
 import 'data_source.dart';
 import 'inventory_controller.dart';
@@ -30,6 +31,7 @@ class InventoryScreen extends StatelessWidget {
         future: _inventoryController.getGolds(),
         builder: builder,
       ),
+      drawer: const MyDrawer(),
     );
   }
 

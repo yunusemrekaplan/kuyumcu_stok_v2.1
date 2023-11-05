@@ -26,7 +26,12 @@ class InventoryController extends GetxController {
     );
   }
 
-  RxList<Gold> get golds => _goldDbController.golds;
+  RxList<Gold> get golds => _goldDbController.golds
+      .where(
+        (p0) => p0.piece > 0,
+      )
+      .toList()
+      .obs;
 
   Future<void> getGolds() async {
     bool state = await _goldDbController.getAll();

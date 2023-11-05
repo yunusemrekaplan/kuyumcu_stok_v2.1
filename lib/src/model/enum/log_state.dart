@@ -5,4 +5,5 @@ enum LogState {
   getAllData,
   updateData,
   deleteData,
+  getCurrenciesHakanAltin,
 }

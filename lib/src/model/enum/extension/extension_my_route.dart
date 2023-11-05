@@ -9,6 +9,8 @@ extension ToString on MyRoute {
         return '/inventory';
       case MyRoute.search:
         return '/search';
+      case MyRoute.sale:
+        return '/sale';
       default:
         return 'Unknown route';
     }
