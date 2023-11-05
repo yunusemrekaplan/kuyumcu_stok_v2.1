@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 const textColor = Colors.white;
+const tableBorderColor = Colors.white;
+const tableHeadingRowColor = Colors.transparent;
 
 const appBarTitle = 'Satış';
 const barkodFormRowHint = 'Barkod';
@@ -9,13 +11,25 @@ const profitGramFormRowHint = 'Kar Gram';
 const salesPriceFormRowHint = 'Satış Fiyatı';
 const salesGramFormRowHint = 'Satış Gram';
 const pieceFormRowHint = 'Adet';
+const currencyTableColumn1 = 'Alış';
+const currencyTableColumn2 = 'Satış';
+const currencyTableCell1 = 'HAS';
+const currencyTableCell2 = 'USD';
+const currencyTableCell3 = 'EUR';
+const confirmButton = 'Onayla';
+const refreshButton = 'Yenile';
 
 const leftSideFlex = 5;
 const rightSideFlex = 2;
 const leftSideRowsFlex = 1;
 
-const columnFontSize = 22.0;
-const cellFontSize = 20.0;
+const letterSpacing = 1.5;
+const tableBorderWidth = 1.0;
+const goldTableColumnFontSize = 22.0;
+const goldTableCellFontSize = 20.0;
+const currencyTableColumnFontSize = 28.0;
+const currencyTableCellFontSize = 22.0;
+const buttonFontSize = 26.0;
 const barkodFormRowMaxWidth = 190.0;
 const profitTlFormRowMaxWidth = 100.0;
 const profitGramFormRowMaxWidth = 130.0;

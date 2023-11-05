@@ -82,12 +82,6 @@ class SaleScreen extends StatelessWidget {
     );
   }
 
-  buildRightSide(BuildContext context) {
-    return Container(
-      color: Colors.black,
-    );
-  }
-
   Padding buildFirstRow() {
     return Padding(
       padding: formRowMargin,
@@ -97,7 +91,7 @@ class SaleScreen extends StatelessWidget {
           color: _themeController.containerColor.value,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: formRowPadding,
@@ -145,9 +139,20 @@ class SaleScreen extends StatelessWidget {
           borderRadius: borderRadiusCircular,
           color: _themeController.containerColor.value,
         ),
-        child: DataTable(
-          columns: _saleController.tableColumns,
-          rows: _saleController.tableRows,
+        child: Center(
+          child: DataTable(
+            columns: _saleController.tableColumns,
+            rows: _saleController.tableRows,
+            headingRowColor: MaterialStateColor.resolveWith(
+              (states) => tableHeadingRowColor,
+            ),
+            border: TableBorder.symmetric(
+              inside: const BorderSide(
+                color: tableBorderColor,
+                width: tableBorderWidth,
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -162,7 +167,7 @@ class SaleScreen extends StatelessWidget {
           color: _themeController.containerColor.value,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: formRowPadding,
@@ -196,9 +201,137 @@ class SaleScreen extends StatelessWidget {
                 onChanged: (String value) {},
               ),
             ),
+            Padding(
+              padding: formRowPadding,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: borderRadiusCircular,
+                  ),
+                ),
+                child: const Text(
+                  confirmButton,
+                  style: TextStyle(
+                    fontSize: buttonFontSize,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Column buildRightSide(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        DataTable(
+          border: TableBorder.symmetric(
+            inside: const BorderSide(
+              color: tableBorderColor,
+              width: tableBorderWidth,
+            ),
+          ),
+          headingRowColor: MaterialStateColor.resolveWith(
+            (states) => tableHeadingRowColor,
+          ),
+          columns: const [
+            DataColumn(label: Text('')),
+            DataColumn(
+              label: Text(
+                currencyTableColumn1,
+                style: TextStyle(
+                  fontSize: currencyTableColumnFontSize,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: letterSpacing,
+                ),
+              ),
+            ),
+            DataColumn(
+              label: Text(
+                currencyTableColumn2,
+                style: TextStyle(
+                  fontSize: currencyTableColumnFontSize,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: letterSpacing,
+                ),
+              ),
+            ),
+          ],
+          rows: const [
+            DataRow(
+              cells: [
+                DataCell(
+                  Text(
+                    currencyTableCell1,
+                    style: TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                      letterSpacing: letterSpacing,
+                    ),
+                  ),
+                ),
+                DataCell(Text('')),
+                DataCell(Text('')),
+              ],
+            ),
+            DataRow(
+              cells: [
+                DataCell(
+                  Text(
+                    currencyTableCell2,
+                    style: TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                      letterSpacing: letterSpacing,
+                    ),
+                  ),
+                ),
+                DataCell(Text('')),
+                DataCell(Text('')),
+              ],
+            ),
+            DataRow(
+              cells: [
+                DataCell(
+                  Text(
+                    currencyTableCell3,
+                    style: TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                      letterSpacing: letterSpacing,
+                    ),
+                  ),
+                ),
+                DataCell(Text('')),
+                DataCell(Text('')),
+              ],
+            ),
+          ],
+        ),
+        Padding(
+          padding: formRowPadding,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: borderRadiusCircular,
+                  ),
+                ),
+                child: const Text(
+                  refreshButton,
+                  style: TextStyle(
+                    fontSize: buttonFontSize,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

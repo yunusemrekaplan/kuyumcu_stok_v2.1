@@ -29,7 +29,7 @@ class SaleController extends GetxController {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: columnFontSize,
+              fontSize: goldTableColumnFontSize,
             ),
           ),
         ),
@@ -40,7 +40,7 @@ class SaleController extends GetxController {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: columnFontSize,
+              fontSize: goldTableColumnFontSize,
             ),
           ),
         ),
@@ -51,7 +51,7 @@ class SaleController extends GetxController {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: columnFontSize,
+              fontSize: goldTableColumnFontSize,
             ),
           ),
         ),
@@ -62,7 +62,7 @@ class SaleController extends GetxController {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: columnFontSize,
+              fontSize: goldTableColumnFontSize,
             ),
           ),
         ),
@@ -73,7 +73,7 @@ class SaleController extends GetxController {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: columnFontSize,
+              fontSize: goldTableColumnFontSize,
             ),
           ),
         ),
@@ -87,7 +87,7 @@ class SaleController extends GetxController {
                 cells[0],
                 style: const TextStyle(
                   color: textColor,
-                  fontSize: cellFontSize,
+                  fontSize: goldTableCellFontSize,
                 ),
               ),
             ),
@@ -96,7 +96,7 @@ class SaleController extends GetxController {
                 cells[1],
                 style: const TextStyle(
                   color: textColor,
-                  fontSize: cellFontSize,
+                  fontSize: goldTableCellFontSize,
                 ),
               ),
             ),
@@ -105,7 +105,7 @@ class SaleController extends GetxController {
                 cells[2],
                 style: const TextStyle(
                   color: textColor,
-                  fontSize: cellFontSize,
+                  fontSize: goldTableCellFontSize,
                 ),
               ),
             ),
@@ -114,7 +114,7 @@ class SaleController extends GetxController {
                 cells[3],
                 style: const TextStyle(
                   color: textColor,
-                  fontSize: cellFontSize,
+                  fontSize: goldTableCellFontSize,
                 ),
               ),
             ),
@@ -123,7 +123,7 @@ class SaleController extends GetxController {
                 cells[4],
                 style: const TextStyle(
                   color: textColor,
-                  fontSize: cellFontSize,
+                  fontSize: goldTableCellFontSize,
                 ),
               ),
             ),
