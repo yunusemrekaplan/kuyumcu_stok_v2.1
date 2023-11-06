@@ -141,8 +141,8 @@ class SaleScreen extends StatelessWidget {
         ),
         child: Center(
           child: DataTable(
-            columns: _saleController.tableColumns,
-            rows: _saleController.tableRows,
+            columns: tableColumns,
+            rows: tableRows,
             headingRowColor: MaterialStateColor.resolveWith(
               (states) => tableHeadingRowColor,
             ),
@@ -261,10 +261,10 @@ class SaleScreen extends StatelessWidget {
               ),
             ),
           ],
-          rows: const [
+          rows: [
             DataRow(
               cells: [
-                DataCell(
+                const DataCell(
                   Text(
                     currencyTableCell1,
                     style: TextStyle(
@@ -273,13 +273,27 @@ class SaleScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                DataCell(Text('')),
-                DataCell(Text('')),
+                DataCell(
+                  Text(
+                    _saleController.currencies['fineGoldBuy'].toString(),
+                    style: const TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                    ),
+                  ),
+                ),
+                DataCell(
+                  Text(
+                    _saleController.currencies['fineGoldSale'].toString(),
+                    style: const TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                    ),
+                  ),
+                ),
               ],
             ),
             DataRow(
               cells: [
-                DataCell(
+                const DataCell(
                   Text(
                     currencyTableCell2,
                     style: TextStyle(
@@ -288,13 +302,27 @@ class SaleScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                DataCell(Text('')),
-                DataCell(Text('')),
+                DataCell(
+                  Text(
+                    _saleController.currencies['usdBuy'].toString(),
+                    style: const TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                    ),
+                  ),
+                ),
+                DataCell(
+                  Text(
+                    _saleController.currencies['usdSale'].toString(),
+                    style: const TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                    ),
+                  ),
+                ),
               ],
             ),
             DataRow(
               cells: [
-                DataCell(
+                const DataCell(
                   Text(
                     currencyTableCell3,
                     style: TextStyle(
@@ -303,8 +331,22 @@ class SaleScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                DataCell(Text('')),
-                DataCell(Text('')),
+                DataCell(
+                  Text(
+                    _saleController.currencies['eurBuy'].toString(),
+                    style: const TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                    ),
+                  ),
+                ),
+                DataCell(
+                  Text(
+                    _saleController.currencies['eurSale'].toString(),
+                    style: const TextStyle(
+                      fontSize: currencyTableCellFontSize,
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
@@ -315,7 +357,7 @@ class SaleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _saleController.onRefresh,
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: borderRadiusCircular,
@@ -334,4 +376,113 @@ class SaleScreen extends StatelessWidget {
       ],
     );
   }
+
+  List<DataColumn> get tableColumns => [
+        const DataColumn(
+          label: Text(
+            nameColumn,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: goldTableColumnFontSize,
+            ),
+          ),
+        ),
+        const DataColumn(
+          numeric: true,
+          label: Text(
+            pieceColumn,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: goldTableColumnFontSize,
+            ),
+          ),
+        ),
+        const DataColumn(
+          numeric: true,
+          label: Text(
+            gramColumn,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: goldTableColumnFontSize,
+            ),
+          ),
+        ),
+        const DataColumn(
+          numeric: true,
+          label: Text(
+            costColumn,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: goldTableColumnFontSize,
+            ),
+          ),
+        ),
+        const DataColumn(
+          numeric: true,
+          label: Text(
+            salesGramColumn,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: goldTableColumnFontSize,
+            ),
+          ),
+        ),
+      ];
+
+  List<DataRow> get tableRows => [
+        DataRow(
+          cells: [
+            DataCell(
+              Text(
+                _saleController.goldCells[0],
+                style: const TextStyle(
+                  color: textColor,
+                  fontSize: goldTableCellFontSize,
+                ),
+              ),
+            ),
+            DataCell(
+              Text(
+                _saleController.goldCells[1],
+                style: const TextStyle(
+                  color: textColor,
+                  fontSize: goldTableCellFontSize,
+                ),
+              ),
+            ),
+            DataCell(
+              Text(
+                _saleController.goldCells[2],
+                style: const TextStyle(
+                  color: textColor,
+                  fontSize: goldTableCellFontSize,
+                ),
+              ),
+            ),
+            DataCell(
+              Text(
+                _saleController.goldCells[3],
+                style: const TextStyle(
+                  color: textColor,
+                  fontSize: goldTableCellFontSize,
+                ),
+              ),
+            ),
+            DataCell(
+              Text(
+                _saleController.goldCells[4],
+                style: const TextStyle(
+                  color: textColor,
+                  fontSize: goldTableCellFontSize,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ];
 }

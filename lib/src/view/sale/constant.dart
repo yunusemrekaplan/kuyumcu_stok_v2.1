@@ -5,6 +5,11 @@ const tableBorderColor = Colors.white;
 const tableHeadingRowColor = Colors.transparent;
 
 const appBarTitle = 'Satış';
+const nameColumn = 'İsim';
+const pieceColumn = 'Adet';
+const gramColumn = 'Gram';
+const costColumn = 'Maliyet';
+const salesGramColumn = 'S. Gramı';
 const barkodFormRowHint = 'Barkod';
 const profitTlFormRowHint = 'Kar TL';
 const profitGramFormRowHint = 'Kar Gram';

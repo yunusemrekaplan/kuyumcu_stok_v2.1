@@ -17,123 +17,47 @@ class SaleController extends GetxController {
   final salesGramTextEditingController = TextEditingController();
   final pieceTextEditingController = TextEditingController();
 
-  List<String> cells = ['İsim', 'Adet', 'Gram', 'Maliyet', 'S. Gramı'].obs;
+  List<String> goldCells = ['İsim', 'Adet', 'Gram', 'Maliyet', 'S. Gramı'].obs;
 
   RxList<Gold> get golds => _goldDbController.golds;
-  Map<String, double> get currencies => _currencyService.currencies;
-
-  List<DataColumn> get tableColumns => [
-        const DataColumn(
-          label: Text(
-            'İsim',
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: goldTableColumnFontSize,
-            ),
-          ),
-        ),
-        const DataColumn(
-          numeric: true,
-          label: Text(
-            'Adet',
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: goldTableColumnFontSize,
-            ),
-          ),
-        ),
-        const DataColumn(
-          numeric: true,
-          label: Text(
-            'Gram',
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: goldTableColumnFontSize,
-            ),
-          ),
-        ),
-        const DataColumn(
-          numeric: true,
-          label: Text(
-            'Maliyet',
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: goldTableColumnFontSize,
-            ),
-          ),
-        ),
-        const DataColumn(
-          numeric: true,
-          label: Text(
-            'S. Gramı',
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: goldTableColumnFontSize,
-            ),
-          ),
-        ),
-      ];
-
-  List<DataRow> get tableRows => [
-        DataRow(
-          cells: [
-            DataCell(
-              Text(
-                cells[0],
-                style: const TextStyle(
-                  color: textColor,
-                  fontSize: goldTableCellFontSize,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                cells[1],
-                style: const TextStyle(
-                  color: textColor,
-                  fontSize: goldTableCellFontSize,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                cells[2],
-                style: const TextStyle(
-                  color: textColor,
-                  fontSize: goldTableCellFontSize,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                cells[3],
-                style: const TextStyle(
-                  color: textColor,
-                  fontSize: goldTableCellFontSize,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                cells[4],
-                style: const TextStyle(
-                  color: textColor,
-                  fontSize: goldTableCellFontSize,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ];
+  RxMap currencies = {}.obs;
 
   Future<void> init() async {
     await getCurrency();
     await getGolds();
+
+    currencies.value = _currencyService.currencies;
+    print(currencies);
+    /*
+    barcodeTextEditingController.addListener(() {
+      if (barcodeTextEditingController.text.length == 13) {
+        Gold gold = golds.firstWhere(
+          (element) => element.barcode == barcodeTextEditingController.text,
+          orElse: () => null,
+        );
+        if (gold != null) {
+          pieceTextEditingController.text = '1';
+          salesPriceTextEditingController.text = gold.salesPrice.toString();
+          salesGramTextEditingController.text = gold.salesGram.toString();
+          profitTlTextEditingController.text = gold.profitTl.toString();
+          profitGramTextEditingController.text = gold.profitGram.toString();
+        } else {
+          Get.snackbar(
+            'ERROR',
+            'Ürün bulunamadı',
+            colorText: Colors.white,
+            backgroundColor: Colors.red,
+          );
+        }
+      }
+    });
+    */
+  }
+
+  Future<void> onRefresh() async {
+    await getCurrency();
+
+    currencies.value = _currencyService.currencies;
   }
 
   Future<void> getCurrency() async {
