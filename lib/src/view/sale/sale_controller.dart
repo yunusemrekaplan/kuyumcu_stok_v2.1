@@ -58,6 +58,13 @@ class SaleController extends GetxController {
     await getCurrency();
 
     currencies.value = _currencyService.currencies;
+
+    barcodeTextEditingController.clear();
+    profitTlTextEditingController.clear();
+    profitGramTextEditingController.clear();
+    salesPriceTextEditingController.clear();
+    salesGramTextEditingController.clear();
+    pieceTextEditingController.clear();
   }
 
   Future<void> getCurrency() async {

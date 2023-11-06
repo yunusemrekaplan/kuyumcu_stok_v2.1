@@ -140,16 +140,18 @@ class SaleScreen extends StatelessWidget {
           color: _themeController.containerColor.value,
         ),
         child: Center(
-          child: DataTable(
-            columns: tableColumns,
-            rows: tableRows,
-            headingRowColor: MaterialStateColor.resolveWith(
-              (states) => tableHeadingRowColor,
-            ),
-            border: TableBorder.symmetric(
-              inside: const BorderSide(
-                color: tableBorderColor,
-                width: tableBorderWidth,
+          child: Obx(
+            () => DataTable(
+              columns: goldTableColumns,
+              rows: goldTableRows,
+              headingRowColor: MaterialStateColor.resolveWith(
+                (states) => tableHeadingRowColor,
+              ),
+              border: TableBorder.symmetric(
+                inside: const BorderSide(
+                  color: tableBorderColor,
+                  width: tableBorderWidth,
+                ),
               ),
             ),
           ),
@@ -228,156 +230,173 @@ class SaleScreen extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        DataTable(
-          border: TableBorder.symmetric(
-            inside: const BorderSide(
-              color: tableBorderColor,
-              width: tableBorderWidth,
-            ),
-          ),
-          headingRowColor: MaterialStateColor.resolveWith(
-            (states) => tableHeadingRowColor,
-          ),
-          columns: const [
-            DataColumn(label: Text('')),
-            DataColumn(
-              label: Text(
-                currencyTableColumn1,
-                style: TextStyle(
-                  fontSize: currencyTableColumnFontSize,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: letterSpacing,
+        Obx(
+          () => Padding(
+            padding: currenciesTablePadding,
+            child: DataTable(
+              border: TableBorder.symmetric(
+                inside: const BorderSide(
+                  color: tableBorderColor,
+                  width: tableBorderWidth,
                 ),
               ),
-            ),
-            DataColumn(
-              label: Text(
-                currencyTableColumn2,
-                style: TextStyle(
-                  fontSize: currencyTableColumnFontSize,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: letterSpacing,
-                ),
+              headingRowColor: MaterialStateColor.resolveWith(
+                (states) => tableHeadingRowColor,
               ),
+              columns: currenciesTableColumn,
+              rows: currenciesTableRows,
             ),
-          ],
-          rows: [
-            DataRow(
-              cells: [
-                const DataCell(
-                  Text(
-                    currencyTableCell1,
-                    style: TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                      letterSpacing: letterSpacing,
-                    ),
-                  ),
-                ),
-                DataCell(
-                  Text(
-                    _saleController.currencies['fineGoldBuy'].toString(),
-                    style: const TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                    ),
-                  ),
-                ),
-                DataCell(
-                  Text(
-                    _saleController.currencies['fineGoldSale'].toString(),
-                    style: const TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            DataRow(
-              cells: [
-                const DataCell(
-                  Text(
-                    currencyTableCell2,
-                    style: TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                      letterSpacing: letterSpacing,
-                    ),
-                  ),
-                ),
-                DataCell(
-                  Text(
-                    _saleController.currencies['usdBuy'].toString(),
-                    style: const TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                    ),
-                  ),
-                ),
-                DataCell(
-                  Text(
-                    _saleController.currencies['usdSale'].toString(),
-                    style: const TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            DataRow(
-              cells: [
-                const DataCell(
-                  Text(
-                    currencyTableCell3,
-                    style: TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                      letterSpacing: letterSpacing,
-                    ),
-                  ),
-                ),
-                DataCell(
-                  Text(
-                    _saleController.currencies['eurBuy'].toString(),
-                    style: const TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                    ),
-                  ),
-                ),
-                DataCell(
-                  Text(
-                    _saleController.currencies['eurSale'].toString(),
-                    style: const TextStyle(
-                      fontSize: currencyTableCellFontSize,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
-        Padding(
-          padding: formRowPadding,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ElevatedButton(
-                onPressed: _saleController.onRefresh,
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: borderRadiusCircular,
-                  ),
-                ),
-                child: const Text(
-                  refreshButton,
-                  style: TextStyle(
-                    fontSize: buttonFontSize,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
+        buildRefreshButton(),
       ],
     );
   }
 
-  List<DataColumn> get tableColumns => [
+  Padding buildRefreshButton() {
+    return Padding(
+      padding: formRowPadding,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          ElevatedButton(
+            onPressed: _saleController.onRefresh,
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: borderRadiusCircular,
+              ),
+            ),
+            child: const Text(
+              refreshButtonText,
+              style: TextStyle(
+                fontSize: buttonFontSize,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  List<DataColumn> get currenciesTableColumn {
+    return const [
+      DataColumn(label: Text('')),
+      DataColumn(
+        label: Text(
+          currencyTableColumn1,
+          style: TextStyle(
+            fontSize: currencyTableColumnFontSize,
+            fontWeight: FontWeight.bold,
+            letterSpacing: letterSpacing,
+          ),
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          currencyTableColumn2,
+          style: TextStyle(
+            fontSize: currencyTableColumnFontSize,
+            fontWeight: FontWeight.bold,
+            letterSpacing: letterSpacing,
+          ),
+        ),
+      ),
+    ];
+  }
+
+  List<DataRow> get currenciesTableRows {
+    return [
+      DataRow(
+        cells: [
+          const DataCell(
+            Text(
+              currencyTableCell1,
+              style: TextStyle(
+                fontSize: currencyTableCellFontSize,
+                letterSpacing: letterSpacing,
+              ),
+            ),
+          ),
+          DataCell(
+            Text(
+              _saleController.currencies['fineGoldBuy'].toString(),
+              style: const TextStyle(
+                fontSize: currencyTableCellFontSize,
+              ),
+            ),
+          ),
+          DataCell(
+            Text(
+              _saleController.currencies['fineGoldSale'].toString(),
+              style: const TextStyle(
+                fontSize: currencyTableCellFontSize,
+              ),
+            ),
+          ),
+        ],
+      ),
+      DataRow(
+        cells: [
+          const DataCell(
+            Text(
+              currencyTableCell2,
+              style: TextStyle(
+                fontSize: currencyTableCellFontSize,
+                letterSpacing: letterSpacing,
+              ),
+            ),
+          ),
+          DataCell(
+            Text(
+              _saleController.currencies['usdBuy'].toString(),
+              style: const TextStyle(
+                fontSize: currencyTableCellFontSize,
+              ),
+            ),
+          ),
+          DataCell(
+            Text(
+              _saleController.currencies['usdSale'].toString(),
+              style: const TextStyle(
+                fontSize: currencyTableCellFontSize,
+              ),
+            ),
+          ),
+        ],
+      ),
+      DataRow(
+        cells: [
+          const DataCell(
+            Text(
+              currencyTableCell3,
+              style: TextStyle(
+                fontSize: currencyTableCellFontSize,
+                letterSpacing: letterSpacing,
+              ),
+            ),
+          ),
+          DataCell(
+            Text(
+              _saleController.currencies['eurBuy'].toString(),
+              style: const TextStyle(
+                fontSize: currencyTableCellFontSize,
+              ),
+            ),
+          ),
+          DataCell(
+            Text(
+              _saleController.currencies['eurSale'].toString(),
+              style: const TextStyle(
+                fontSize: currencyTableCellFontSize,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ];
+  }
+
+  List<DataColumn> get goldTableColumns => [
         const DataColumn(
           label: Text(
             nameColumn,
@@ -434,7 +453,7 @@ class SaleScreen extends StatelessWidget {
         ),
       ];
 
-  List<DataRow> get tableRows => [
+  List<DataRow> get goldTableRows => [
         DataRow(
           cells: [
             DataCell(

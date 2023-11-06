@@ -22,7 +22,7 @@ const currencyTableCell1 = 'HAS';
 const currencyTableCell2 = 'USD';
 const currencyTableCell3 = 'EUR';
 const confirmButton = 'Onayla';
-const refreshButton = 'Yenile';
+const refreshButtonText = 'Yenile';
 
 const leftSideFlex = 5;
 const rightSideFlex = 2;
@@ -47,6 +47,11 @@ const formRowPadding = EdgeInsets.all(formRowPaddingAll);
 
 const formRowMarginAll = 32.0;
 const formRowMargin = EdgeInsets.all(formRowMarginAll);
+
+const currenciesTablePaddingLeft = 32.0;
+const currenciesTablePadding = EdgeInsets.only(
+  top: currenciesTablePaddingLeft,
+);
 
 const borderRadiusCircularDouble = 16.0;
 final borderRadiusCircular = BorderRadius.circular(borderRadiusCircularDouble);
