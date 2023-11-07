@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_my_route.dart';
 
 import '../../../model/enum/my_route.dart';
@@ -31,10 +32,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor),
             ),
             onTap: () {
-              Navigator.pushReplacementNamed(
-                context,
-                MyRoute.inventory.stringDefinition,
-              );
+              Get.offNamed(MyRoute.inventory.stringDefinition);
             },
           ),
           ListTile(
@@ -43,10 +41,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor),
             ),
             onTap: () {
-              Navigator.pushReplacementNamed(
-                context,
-                MyRoute.sale.stringDefinition,
-              );
+              Get.offNamed(MyRoute.sale.stringDefinition);
             },
           ),
         ],
