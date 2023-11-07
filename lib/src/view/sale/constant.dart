@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
 
+const snackBarErrorColor = Colors.red;
+const snackBarSuccessColor = Colors.green;
 const textColor = Colors.white;
 const tableBorderColor = Colors.white;
 const tableHeadingRowColor = Colors.transparent;
 
+const goldCells1 = 'İsim';
+const goldCells2 = 'Adet';
+const goldCells3 = 'Gram';
+const goldCells4 = 'Maliyet';
+const goldCells5 = 'S. Gramı';
+const snackBarErrorTitleText = 'Hata!';
+const snackBarSuccessTitleText = 'Başarılı!';
+const snackBarSaleSuccessText = 'Satış başarılı.';
+const snackBarSaleErrorText1 = 'Satış başarısız.';
+const snackBarSaleErrorText2 = 'Adet Girilmedi.';
+const snackBarSaleErrorText3 = 'Ürün bulunamadı';
+const snackBarSaleErrorText4 = 'Adet fazla';
+const snackBarSaleErrorText5 = 'Adet 0\'dan büyük olmalı';
+const snackBarSaleErrorText6 = 'Ürün güncellenemedi';
+const snackBarSaleErrorText7 = 'Döviz kurları alınamadı';
+const snackBarSaleErrorText8 = 'Kayıtlı ürünler getirilemedi';
+const snackBarSaleErrorText9 = 'Ürün bulunamadı';
 const appBarTitle = 'Satış';
 const profitTlText = 'Kar TL: ';
 const profitGramText = 'Kar G: ';

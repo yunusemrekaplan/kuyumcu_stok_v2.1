@@ -6,6 +6,7 @@ import '../../controller/data/sale_db_controller.dart';
 import '../../controller/service/currency_service.dart';
 import '../../model/data/gold.dart';
 import '../../model/data/sale.dart';
+import 'constant.dart';
 
 class SaleController extends GetxController {
   final _currencyService = CurrencyService();
@@ -19,7 +20,13 @@ class SaleController extends GetxController {
   final salesGramTextEditingController = TextEditingController().obs;
   final pieceTextEditingController = TextEditingController().obs;
 
-  List<String> goldCells = ['İsim', 'Adet', 'Gram', 'Maliyet', 'S. Gramı'].obs;
+  List<String> goldCells = [
+    goldCells1,
+    goldCells2,
+    goldCells3,
+    goldCells4,
+    goldCells5,
+  ].obs;
 
   RxList<Gold> get golds => _goldDbController.golds;
   RxMap currencies = {}.obs;
@@ -30,30 +37,6 @@ class SaleController extends GetxController {
     await getGolds();
 
     currencies.value = _currencyService.currencies;
-    /*
-    barcodeTextEditingController.addListener(() {
-      if (barcodeTextEditingController.text.length == 13) {
-        Gold gold = golds.firstWhere(
-          (element) => element.barcode == barcodeTextEditingController.text,
-          orElse: () => null,
-        );
-        if (gold != null) {
-          pieceTextEditingController.text = '1';
-          salesPriceTextEditingController.text = gold.salesPrice.toString();
-          salesGramTextEditingController.text = gold.salesGram.toString();
-          profitTlTextEditingController.text = gold.profitTl.toString();
-          profitGramTextEditingController.text = gold.profitGram.toString();
-        } else {
-          Get.snackbar(
-            'ERROR',
-            'Ürün bulunamadı',
-            colorText: Colors.white,
-            backgroundColor: Colors.red,
-          );
-        }
-      }
-    });
-    */
   }
 
   Future<void> onRefresh() async {
@@ -66,11 +49,11 @@ class SaleController extends GetxController {
     salesGramTextEditingController.value.clear();
     pieceTextEditingController.value.clear();
 
-    goldCells[0] = 'İsim';
-    goldCells[1] = 'Adet';
-    goldCells[2] = 'Gram';
-    goldCells[3] = 'Maliyet';
-    goldCells[4] = 'S. Gramı';
+    goldCells[0] = goldCells1;
+    goldCells[1] = goldCells2;
+    goldCells[2] = goldCells3;
+    goldCells[3] = goldCells4;
+    goldCells[4] = goldCells5;
   }
 
   Future<void> getCurrency() async {
@@ -79,10 +62,10 @@ class SaleController extends GetxController {
       currencies.value = _currencyService.currencies;
     } else {
       Get.snackbar(
-        'ERROR',
-        'Döviz kurları alınamadı',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        snackBarErrorTitleText,
+        snackBarSaleErrorText7,
+        colorText: textColor,
+        backgroundColor: snackBarErrorColor,
       );
     }
   }
@@ -91,10 +74,10 @@ class SaleController extends GetxController {
     bool state = await _goldDbController.getAll();
     if (!state) {
       Get.snackbar(
-        'ERROR',
-        'Kayıtlı ürünler getirilemedi',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        snackBarErrorTitleText,
+        snackBarSaleErrorText8,
+        colorText: textColor,
+        backgroundColor: snackBarErrorColor,
       );
     }
   }
@@ -110,31 +93,35 @@ class SaleController extends GetxController {
         }
       }
       if (gold != null) {
-        goldCells[0] = gold!.name.length > 26
-            ? '${gold!.name.substring(0, 26)}...'
-            : gold!.name;
-        goldCells[1] = gold!.piece.toString();
-        goldCells[2] = gold!.gram.toString();
-        goldCells[3] = gold!.cost.toString();
-        goldCells[4] = gold!.salesGrams.toString();
-        profitTlTextEditingController.value.text =
-            ((gold!.salesGrams - gold!.cost) * currencies['fineGoldSale'])
-                .toStringAsFixed(0);
-        profitGramTextEditingController.value.text =
-            (gold!.salesGrams - gold!.cost).toStringAsFixed(3);
-        salesPriceTextEditingController.value.text =
-            (gold!.salesGrams * currencies['fineGoldSale']).toStringAsFixed(0);
-        salesGramTextEditingController.value.text =
-            gold!.salesGrams.toStringAsFixed(3);
+        goldTableUpdate();
       } else {
         Get.snackbar(
-          'ERROR',
-          'Ürün bulunamadı',
-          colorText: Colors.white,
-          backgroundColor: Colors.red,
+          snackBarErrorTitleText,
+          snackBarSaleErrorText9,
+          colorText: textColor,
+          backgroundColor: snackBarErrorColor,
         );
       }
     }
+  }
+
+  void goldTableUpdate() {
+    goldCells[0] = gold!.name.length > 26
+        ? '${gold!.name.substring(0, 26)}...'
+        : gold!.name;
+    goldCells[1] = gold!.piece.toString();
+    goldCells[2] = gold!.gram.toString();
+    goldCells[3] = gold!.cost.toString();
+    goldCells[4] = gold!.salesGrams.toString();
+    profitTlTextEditingController.value.text =
+        ((gold!.salesGrams - gold!.cost) * currencies['fineGoldSale'])
+            .toStringAsFixed(0);
+    profitGramTextEditingController.value.text =
+        (gold!.salesGrams - gold!.cost).toStringAsFixed(3);
+    salesPriceTextEditingController.value.text =
+        (gold!.salesGrams * currencies['fineGoldSale']).toStringAsFixed(0);
+    salesGramTextEditingController.value.text =
+        gold!.salesGrams.toStringAsFixed(3);
   }
 
   void onChangedProfitTl(String? value) {
@@ -210,34 +197,34 @@ class SaleController extends GetxController {
           await updateGold(piece);
           onRefresh();
           Get.snackbar(
-            'SUCCESS',
-            'Ürün satıldı',
-            colorText: Colors.white,
-            backgroundColor: Colors.green,
+            snackBarSuccessTitleText,
+            snackBarSaleSuccessText,
+            colorText: textColor,
+            backgroundColor: snackBarSuccessColor,
           );
         } else {
           _saleDbController.sales.removeLast();
           Get.snackbar(
-            'ERROR',
-            'Ürün satılamadı',
-            colorText: Colors.white,
-            backgroundColor: Colors.red,
+            snackBarErrorTitleText,
+            snackBarSaleErrorText1,
+            colorText: textColor,
+            backgroundColor: snackBarErrorColor,
           );
         }
       } else {
         Get.snackbar(
-          'ERROR',
-          'Adet girilmedi',
-          colorText: Colors.white,
-          backgroundColor: Colors.red,
+          snackBarErrorTitleText,
+          snackBarSaleErrorText2,
+          colorText: textColor,
+          backgroundColor: snackBarErrorColor,
         );
       }
     } else {
       Get.snackbar(
-        'ERROR',
-        'Ürün bulunamadı',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        snackBarErrorTitleText,
+        snackBarSaleErrorText3,
+        colorText: textColor,
+        backgroundColor: snackBarErrorColor,
       );
     }
   }
@@ -245,18 +232,18 @@ class SaleController extends GetxController {
   bool pieceControl(int piece) {
     if (gold!.piece < piece) {
       Get.snackbar(
-        'ERROR',
-        'Adet fazla',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        snackBarErrorTitleText,
+        snackBarSaleErrorText4,
+        colorText: textColor,
+        backgroundColor: snackBarErrorColor,
       );
       return false;
     } else if (piece == 0) {
       Get.snackbar(
-        'ERROR',
-        'Adet 0\'dan büyük olmalı',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        snackBarErrorTitleText,
+        snackBarSaleErrorText5,
+        colorText: textColor,
+        backgroundColor: snackBarErrorColor,
       );
       return false;
     }
@@ -296,10 +283,10 @@ class SaleController extends GetxController {
       )] = gold!;
     } else {
       Get.snackbar(
-        'ERROR',
-        'Ürün güncellenemedi',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        snackBarErrorTitleText,
+        snackBarSaleErrorText6,
+        colorText: textColor,
+        backgroundColor: snackBarErrorColor,
       );
     }
   }
