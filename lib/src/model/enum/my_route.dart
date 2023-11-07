@@ -3,4 +3,5 @@ enum MyRoute {
   inventory,
   search,
   sale,
+  sales,
 }

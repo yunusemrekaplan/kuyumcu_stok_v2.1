@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../model/enum/my_route.dart';
 import '../theme/theme_controller.dart';
 import '../widget/form_row/form_row.dart';
 import '../widget/my_app_bar.dart';
@@ -26,6 +27,7 @@ class SaleScreen extends StatelessWidget {
     return GetBuilder(
       init: _saleController,
       builder: (_) => buildScaffold(context),
+      id: MyRoute.sale,
     );
   }
 
