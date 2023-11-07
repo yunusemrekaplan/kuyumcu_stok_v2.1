@@ -16,7 +16,7 @@ class SaleScreen extends StatelessWidget {
   final _themeController = Get.find<ThemeController>();
 
   final inputFormatDouble =
-      FilteringTextInputFormatter.allow(RegExp(r'^\d+,?\d{0,3}'));
+      FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'));
 
   final inputFormatOnlyDigits =
       FilteringTextInputFormatter.allow(RegExp(r'\d'));
@@ -96,33 +96,55 @@ class SaleScreen extends StatelessWidget {
             Padding(
               padding: formRowPadding,
               child: FormRow(
-                formRowController: _saleController.barcodeTextEditingController,
+                formRowController:
+                    _saleController.barcodeTextEditingController.value,
                 hint: barkodFormRowHint,
                 inputFormatters: [inputFormatOnlyDigits],
                 maxWidth: barkodFormRowMaxWidth,
-                onChanged: (String value) {},
+                onChanged: (value) => _saleController.onSearch(),
               ),
             ),
             Padding(
               padding: formRowPadding,
-              child: FormRow(
-                formRowController:
-                    _saleController.profitTlTextEditingController,
-                hint: profitTlFormRowHint,
-                inputFormatters: [inputFormatOnlyDigits],
-                maxWidth: profitTlFormRowMaxWidth,
-                onChanged: (String value) {},
+              child: Row(
+                children: [
+                  const Text(
+                    profitTlText,
+                    style: TextStyle(
+                      fontSize: 26,
+                    ),
+                  ),
+                  FormRow(
+                    formRowController:
+                        _saleController.profitTlTextEditingController.value,
+                    hint: profitTlFormRowHint,
+                    inputFormatters: [inputFormatOnlyDigits],
+                    maxWidth: profitTlFormRowMaxWidth,
+                    onChanged: _saleController.onChangedProfitTl,
+                  ),
+                ],
               ),
             ),
             Padding(
               padding: formRowPadding,
-              child: FormRow(
-                formRowController:
-                    _saleController.profitGramTextEditingController,
-                hint: profitGramFormRowHint,
-                inputFormatters: [inputFormatDouble],
-                maxWidth: profitGramFormRowMaxWidth,
-                onChanged: (String value) {},
+              child: Row(
+                children: [
+                  const Text(
+                    profitGramText,
+                    style: TextStyle(
+                      fontSize: 26,
+                    ),
+                  ),
+                  FormRow(
+                    formRowController:
+                        _saleController.profitGramTextEditingController.value,
+                    hint: profitGramFormRowHint,
+                    maxWidth: profitGramFormRowMaxWidth,
+                    inputFormatters: [inputFormatDouble],
+                    onChanged: _saleController.onChangedProfitGram,
+                    isDecimal: true,
+                  ),
+                ],
               ),
             ),
           ],
@@ -175,30 +197,32 @@ class SaleScreen extends StatelessWidget {
               padding: formRowPadding,
               child: FormRow(
                 formRowController:
-                    _saleController.salesPriceTextEditingController,
+                    _saleController.salesPriceTextEditingController.value,
                 hint: salesPriceFormRowHint,
                 inputFormatters: [inputFormatOnlyDigits],
                 maxWidth: salesPriceFormRowMaxWidth,
-                onChanged: (String value) {},
+                onChanged: _saleController.onChangedSalesPrice,
               ),
             ),
             Padding(
               padding: formRowPadding,
               child: FormRow(
                 formRowController:
-                    _saleController.salesGramTextEditingController,
+                    _saleController.salesGramTextEditingController.value,
                 hint: salesGramFormRowHint,
                 inputFormatters: [inputFormatOnlyDigits],
                 maxWidth: salesGramFormRowMaxWidth,
-                onChanged: (String value) {},
+                onChanged: null,
+                isEnbaled: false,
               ),
             ),
             Padding(
               padding: formRowPadding,
               child: FormRow(
-                formRowController: _saleController.pieceTextEditingController,
+                formRowController:
+                    _saleController.pieceTextEditingController.value,
                 hint: pieceFormRowHint,
-                inputFormatters: [inputFormatDouble],
+                inputFormatters: [inputFormatOnlyDigits],
                 maxWidth: pieceFormRowMaxWidth,
                 onChanged: (String value) {},
               ),
@@ -206,7 +230,7 @@ class SaleScreen extends StatelessWidget {
             Padding(
               padding: formRowPadding,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: _saleController.onSale,
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: borderRadiusCircular,
@@ -216,6 +240,7 @@ class SaleScreen extends StatelessWidget {
                   confirmButton,
                   style: TextStyle(
                     fontSize: buttonFontSize,
+                    letterSpacing: letterSpacing,
                   ),
                 ),
               ),
@@ -270,6 +295,7 @@ class SaleScreen extends StatelessWidget {
               refreshButtonText,
               style: TextStyle(
                 fontSize: buttonFontSize,
+                letterSpacing: letterSpacing,
               ),
             ),
           ),

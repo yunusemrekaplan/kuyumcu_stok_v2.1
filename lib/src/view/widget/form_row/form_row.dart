@@ -10,16 +10,20 @@ class FormRow extends StatelessWidget {
     super.key,
     required this.formRowController,
     required this.hint,
-    required this.inputFormatters,
+    this.inputFormatters,
     required this.maxWidth,
-    required this.onChanged,
+    this.onChanged,
+    this.isDecimal = false,
+    this.isEnbaled = true,
   });
 
   late TextEditingController formRowController;
-  late List<TextInputFormatter> inputFormatters;
-  late void Function(String)? onChanged;
+  late List<TextInputFormatter>? inputFormatters;
+  void Function(String)? onChanged;
   late String hint;
   late double maxWidth;
+  bool isDecimal;
+  bool isEnbaled;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,12 @@ class FormRow extends StatelessWidget {
           ),
           decoration: inputDecoration(),
           inputFormatters: inputFormatters,
+          keyboardType: TextInputType.numberWithOptions(
+            decimal: isDecimal,
+            signed: true,
+          ),
           onChanged: onChanged,
+          enabled: isEnbaled,
         ),
       ],
     );
@@ -43,12 +52,13 @@ class FormRow extends StatelessWidget {
   InputDecoration inputDecoration() {
     return InputDecoration(
       hintText: hint,
-      hintStyle: const TextStyle(
+      hintStyle: TextStyle(
         fontSize: hintFontSize,
-        color: textColor,
+        color: textColor.withOpacity(0.7),
       ),
       border: border,
       enabledBorder: border,
+      disabledBorder: border,
       focusedBorder: border,
       constraints: BoxConstraints(
         maxHeight: maxHeight,
