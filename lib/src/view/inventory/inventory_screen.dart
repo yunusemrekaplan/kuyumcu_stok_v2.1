@@ -64,7 +64,7 @@ class InventoryScreen extends StatelessWidget {
         borderRadius: borderRadiusCircular,
         child: Theme(
           data: Theme.of(context).copyWith(
-            cardColor: _themeController.containerColor.value,
+            cardColor: _themeController.canvasColor.value,
             dividerColor: Colors.white38,
             textTheme: const TextTheme(
               bodySmall: TextStyle(color: Colors.white, fontSize: 16),

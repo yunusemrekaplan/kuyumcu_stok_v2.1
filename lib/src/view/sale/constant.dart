@@ -74,5 +74,5 @@ const currenciesTablePadding = EdgeInsets.only(
   top: currenciesTablePaddingLeft,
 );
 
-const borderRadiusCircularDouble = 16.0;
-final borderRadiusCircular = BorderRadius.circular(borderRadiusCircularDouble);
+const radius = 16.0;
+final borderRadius = BorderRadius.circular(radius);

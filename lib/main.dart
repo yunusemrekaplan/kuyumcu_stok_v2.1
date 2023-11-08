@@ -8,6 +8,7 @@ import 'src/controller/data/db_helper.dart';
 import 'src/model/enum/my_route.dart';
 import 'src/view/inventory/inventory_screen.dart';
 import 'src/view/sale/sale_screen.dart';
+import 'src/view/add/add_gold_screen.dart';
 import 'src/view/search/search_screen.dart';
 import 'src/view/theme/theme_controller.dart';
 import 'src/view/theme/theme_first.dart';
@@ -41,18 +42,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoute.sale.stringDefinition,
+      initialRoute: MyRoute.addGold.stringDefinition,
       getPages: [
         GetPage(
-            name: MyRoute.inventory.stringDefinition,
-            page: () => InventoryScreen()),
+          name: MyRoute.inventory.stringDefinition,
+          page: () => InventoryScreen(),
+          transition: Transition.fade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
         GetPage(
           name: MyRoute.search.stringDefinition,
           page: () => SearchScreen(),
+          transition: Transition.fade,
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: MyRoute.sale.stringDefinition,
           page: () => SaleScreen(),
+          transition: Transition.fade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: MyRoute.addGold.stringDefinition,
+          page: () => AddGoldScreen(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 500),
         ),
       ],
       themeMode: ThemeMode.light,

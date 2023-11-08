@@ -7,15 +7,15 @@ import 'constant.dart';
 
 class ThemeController extends GetxController {
   RxBool isFirstTheme = true.obs;
-  Rx<Color> containerColor = firstThemeContainerColor.obs;
+  Rx<Color> canvasColor = firstThemeContainerColor.obs;
 
   void changeTheme() {
     isFirstTheme.value = !isFirstTheme.value;
     if (isFirstTheme.value) {
       Get.changeTheme(themeFirst);
-      containerColor.value = firstThemeContainerColor;
+      canvasColor.value = firstThemeContainerColor;
     } else {
-      containerColor.value = secThemeContainerColor;
+      canvasColor.value = secThemeContainerColor;
       Get.changeTheme(themeSec);
     }
     //update(); // TODO: update silmeyi deneyelim

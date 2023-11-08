@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../model/enum/my_route.dart';
 import '../theme/theme_controller.dart';
-import '../widget/form_row/form_row.dart';
+import '../widget/my_text_form_field/my_text_form_field.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
 import 'constant.dart';
@@ -19,8 +19,7 @@ class SaleScreen extends StatelessWidget {
   final inputFormatDouble =
       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'));
 
-  final inputFormatOnlyDigits =
-      FilteringTextInputFormatter.allow(RegExp(r'\d'));
+  final inputFormatOnlyDigits = FilteringTextInputFormatter.digitsOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -89,15 +88,15 @@ class SaleScreen extends StatelessWidget {
       padding: formRowMargin,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: borderRadiusCircular,
-          color: _themeController.containerColor.value,
+          borderRadius: borderRadius,
+          color: _themeController.canvasColor.value,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: formRowPadding,
-              child: FormRow(
+              child: MyTextFormField(
                 formRowController:
                     _saleController.barcodeTextEditingController.value,
                 hint: barkodFormRowHint,
@@ -116,7 +115,7 @@ class SaleScreen extends StatelessWidget {
                       fontSize: 26,
                     ),
                   ),
-                  FormRow(
+                  MyTextFormField(
                     formRowController:
                         _saleController.profitTlTextEditingController.value,
                     hint: profitTlFormRowHint,
@@ -137,7 +136,7 @@ class SaleScreen extends StatelessWidget {
                       fontSize: 26,
                     ),
                   ),
-                  FormRow(
+                  MyTextFormField(
                     formRowController:
                         _saleController.profitGramTextEditingController.value,
                     hint: profitGramFormRowHint,
@@ -160,8 +159,8 @@ class SaleScreen extends StatelessWidget {
       padding: formRowMargin,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: borderRadiusCircular,
-          color: _themeController.containerColor.value,
+          borderRadius: borderRadius,
+          color: _themeController.canvasColor.value,
         ),
         child: Center(
           child: Obx(
@@ -189,15 +188,15 @@ class SaleScreen extends StatelessWidget {
       padding: formRowMargin,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: borderRadiusCircular,
-          color: _themeController.containerColor.value,
+          borderRadius: borderRadius,
+          color: _themeController.canvasColor.value,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: formRowPadding,
-              child: FormRow(
+              child: MyTextFormField(
                 formRowController:
                     _saleController.salesPriceTextEditingController.value,
                 hint: salesPriceFormRowHint,
@@ -208,7 +207,7 @@ class SaleScreen extends StatelessWidget {
             ),
             Padding(
               padding: formRowPadding,
-              child: FormRow(
+              child: MyTextFormField(
                 formRowController:
                     _saleController.salesGramTextEditingController.value,
                 hint: salesGramFormRowHint,
@@ -220,7 +219,7 @@ class SaleScreen extends StatelessWidget {
             ),
             Padding(
               padding: formRowPadding,
-              child: FormRow(
+              child: MyTextFormField(
                 formRowController:
                     _saleController.pieceTextEditingController.value,
                 hint: pieceFormRowHint,
@@ -235,7 +234,7 @@ class SaleScreen extends StatelessWidget {
                 onPressed: _saleController.onSale,
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius: borderRadiusCircular,
+                    borderRadius: borderRadius,
                   ),
                 ),
                 child: const Text(
@@ -290,7 +289,7 @@ class SaleScreen extends StatelessWidget {
             onPressed: _saleController.onRefresh,
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
-                borderRadius: borderRadiusCircular,
+                borderRadius: borderRadius,
               ),
             ),
             child: const Text(

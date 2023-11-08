@@ -203,7 +203,6 @@ class SaleController extends GetxController {
             backgroundColor: snackBarSuccessColor,
           );
         } else {
-          _saleDbController.sales.removeLast();
           Get.snackbar(
             snackBarErrorTitleText,
             snackBarSaleErrorText1,
@@ -270,18 +269,13 @@ class SaleController extends GetxController {
       earnedProfitTL: earnedProfitTl,
       earnedProfitGram: earnedProfitGram,
     );
-    _saleDbController.sales.add(sale);
     return await _saleDbController.add(sale.toJson());
   }
 
   Future<void> updateGold(int piece) async {
     gold!.piece -= piece;
     bool state = await _goldDbController.update(gold!.toJson(), gold!.id);
-    if (state) {
-      _goldDbController.golds[_goldDbController.golds.indexWhere(
-        (element) => element.id == gold!.id,
-      )] = gold!;
-    } else {
+    if (!state) {
       Get.snackbar(
         snackBarErrorTitleText,
         snackBarSaleErrorText6,

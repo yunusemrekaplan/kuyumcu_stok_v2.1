@@ -29,7 +29,7 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             title: const Text(
               drawerInventory,
-              style: TextStyle(color: textColor),
+              style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
               Get.offNamed(MyRoute.inventory.stringDefinition);
@@ -38,10 +38,19 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             title: const Text(
               drawerSale,
-              style: TextStyle(color: textColor),
+              style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
               Get.offNamed(MyRoute.sale.stringDefinition);
+            },
+          ),
+          ListTile(
+            title: const Text(
+              drawerSales,
+              style: TextStyle(color: textColor, fontSize: fontSize),
+            ),
+            onTap: () {
+              Get.offNamed(MyRoute.addGold.stringDefinition);
             },
           ),
         ],
