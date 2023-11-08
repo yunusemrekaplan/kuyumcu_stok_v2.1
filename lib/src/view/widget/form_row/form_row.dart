@@ -19,6 +19,8 @@ class FormRow extends StatelessWidget {
     this.isInteger = false,
     this.isDecimal = false,
     this.isEnabled = true,
+    this.isBarcode = false,
+    this.isSaveButton = false,
     this.dropdownList = const [],
   });
 
@@ -34,6 +36,8 @@ class FormRow extends StatelessWidget {
   final bool isInteger;
   final bool isDecimal;
   final bool isEnabled;
+  final bool isBarcode;
+  final bool isSaveButton;
 
   late TextEditingController controller;
   late String text;
@@ -73,6 +77,7 @@ class FormRow extends StatelessWidget {
       padding: textFormFieldPadding,
       child: TextFormField(
         controller: controller,
+        onChanged: _addGoldController.onChangedTextFormField,
         validator: _validator.validateEmpty,
         style: textFormFieldTextStyle,
         decoration: buildInputDecoration(),
@@ -102,7 +107,11 @@ class FormRow extends StatelessWidget {
         ? (dropdownList.isNotEmpty
             ? buildDropdownButtonBox()
             : Container(width: dropdownWidth))
-        : Container(width: dropdownWidth));
+        : isBarcode == true
+            ? buildBarcodeGenerateButton()
+            : isSaveButton == true
+                ? buildSaveButtons()
+                : Container(width: dropdownWidth));
   }
 
   SizedBox buildDropdownButtonBox() {
@@ -149,6 +158,79 @@ class FormRow extends StatelessWidget {
       hintStyle: textFormFieldHintTextStyle,
       contentPadding: contentPadding,
       constraints: boxConstraints,
+    );
+  }
+
+  SizedBox buildBarcodeGenerateButton() {
+    return SizedBox(
+      width: dropdownWidth,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: ElevatedButton(
+          onPressed: _addGoldController.onGenerateBarcode,
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: borderRadius,
+            ),
+          ),
+          child: const Text(
+            barcodeGenerateButtonText,
+            style: TextStyle(
+              fontSize: buttonFontSize,
+              letterSpacing: letterSpacing,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox buildSaveButtons() {
+    return SizedBox(
+      width: dropdownWidth,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          buildSaveAndPrintButton(),
+          buildSaveButton(),
+        ],
+      ),
+    );
+  }
+
+  ElevatedButton buildSaveButton() {
+    return ElevatedButton(
+      onPressed: _addGoldController.onPressedSaveButton,
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: borderRadius,
+        ),
+      ),
+      child: const Text(
+        saveButtonText,
+        style: TextStyle(
+          fontSize: buttonFontSize,
+          letterSpacing: letterSpacing,
+        ),
+      ),
+    );
+  }
+
+  ElevatedButton buildSaveAndPrintButton() {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: borderRadius,
+        ),
+      ),
+      child: const Text(
+        saveAndPrintButtonText,
+        style: TextStyle(
+          fontSize: buttonFontSize,
+          letterSpacing: letterSpacing,
+        ),
+      ),
     );
   }
 }

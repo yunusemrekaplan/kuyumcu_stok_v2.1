@@ -26,6 +26,8 @@ const contentPaddingRight = 10.0;
 const boxConstraintsMaxWidth = 300.0;
 const boxConstraintsMinHeight = 70.0;
 const boxConstraintsMaxHeight = 70.0;
+const buttonFontSize = 24.0;
+const letterSpacing = 1.0;
 
 const bool dropdownIsExpanded = true;
 
@@ -71,6 +73,9 @@ const EdgeInsets contentPadding = EdgeInsets.only(
 
 BorderSide borderSide = const BorderSide(color: borderSideColor);
 
+const radius = 16.0;
+final borderRadius = BorderRadius.circular(radius);
+
 InputBorder textFormFieldBorder = UnderlineInputBorder(borderSide: borderSide);
 
 BoxConstraints boxConstraints = const BoxConstraints(
@@ -80,3 +85,7 @@ BoxConstraints boxConstraints = const BoxConstraints(
 );
 
 Icon dropDownIcon = const Icon(Icons.arrow_downward, color: iconColor);
+
+const barcodeGenerateButtonText = 'Barkod Oluştur';
+const saveButtonText = ' Kaydet ';
+const saveAndPrintButtonText = ' Kaydet ve Yazdır ';

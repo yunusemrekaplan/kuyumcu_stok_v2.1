@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -83,16 +81,19 @@ class AddGoldScreen extends StatelessWidget {
         isEnableDropDownButton: false,
         isEnabled: false,
         isInteger: true,
+        isBarcode: true,
       ),
-      const SizedBox(height: paddingBoxHeight),
+      SizedBox(height: Get.height * paddingBoxHeight),
       FormRow(
         controller: _addGoldController.pieceController.value,
         text: pieceText,
         hintText: pieceHintText,
-        isEnableDropDownButton: false,
+        isEnableDropDownButton: true,
         isInteger: true,
+        dropdownHintText: pieceDropdownHintText,
+        dropdownList: _addGoldController.pieceList,
       ),
-      const SizedBox(height: paddingBoxHeight),
+      SizedBox(height: Get.height * paddingBoxHeight),
       FormRow(
         controller: _addGoldController.nameController.value,
         text: nameText,
@@ -101,7 +102,7 @@ class AddGoldScreen extends StatelessWidget {
         dropdownHintText: nameDropdownHintText,
         dropdownList: _addGoldController.nameList,
       ),
-      const SizedBox(height: paddingBoxHeight),
+      SizedBox(height: Get.height * paddingBoxHeight),
       FormRow(
         controller: _addGoldController.caratController.value,
         text: caratText,
@@ -112,7 +113,7 @@ class AddGoldScreen extends StatelessWidget {
         dropdownHintText: caratDropdownHintText,
         dropdownList: _addGoldController.caratList,
       ),
-      const SizedBox(height: paddingBoxHeight),
+      SizedBox(height: Get.height * paddingBoxHeight),
       FormRow(
         controller: _addGoldController.purityRateController.value,
         text: purityRateText,
@@ -120,14 +121,38 @@ class AddGoldScreen extends StatelessWidget {
         isEnableDropDownButton: false,
         isDecimal: true,
       ),
+      SizedBox(height: Get.height * paddingBoxHeight),
       FormRow(
         controller: _addGoldController.laborCostController.value,
         text: laborCostText,
         hintText: laborCostHintText,
+        dropdownHintText: laborCostDropdownHintText,
+        isDecimal: true,
+        isEnableDropDownButton: true,
+        dropdownList: _addGoldController.laborCostList,
+      ),
+      SizedBox(height: Get.height * paddingBoxHeight),
+      FormRow(
+        controller: _addGoldController.gramController.value,
+        text: gramText,
+        hintText: gramHintText,
         isDecimal: true,
       ),
-      const SizedBox(height: paddingBoxHeight),
-      //buildAddProductButtonBox(),
+      SizedBox(height: Get.height * paddingBoxHeight),
+      FormRow(
+        controller: _addGoldController.costController.value,
+        text: costText,
+        hintText: costHintText,
+        isDecimal: true,
+      ),
+      SizedBox(height: Get.height * paddingBoxHeight),
+      FormRow(
+        controller: _addGoldController.salesGramController.value,
+        text: salesGramText,
+        hintText: salesGramHintText,
+        isDecimal: true,
+        isSaveButton: true,
+      ),
     ];
   }
 }
