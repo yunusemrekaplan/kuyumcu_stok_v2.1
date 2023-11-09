@@ -346,7 +346,7 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['fineGoldBuy'].toString(),
+              _saleController.currencies['fineGoldBuy']!.toStringAsFixed(2),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -354,7 +354,7 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['fineGoldSale'].toString(),
+              _saleController.currencies['fineGoldSale']!.toStringAsFixed(2),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -375,7 +375,7 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['usdBuy'].toString(),
+              _saleController.currencies['usdBuy']!.toStringAsFixed(2),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -383,7 +383,7 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['usdSale'].toString(),
+              _saleController.currencies['usdSale']!.toStringAsFixed(2),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -404,7 +404,7 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['eurBuy'].toString(),
+              _saleController.currencies['eurBuy']!.toStringAsFixed(2),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -412,7 +412,7 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['eurSale'].toString(),
+              _saleController.currencies['eurSale']!.toStringAsFixed(2),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),

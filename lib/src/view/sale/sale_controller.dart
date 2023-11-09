@@ -29,7 +29,7 @@ class SaleController extends GetxController {
   ].obs;
 
   RxList<Gold> get golds => _goldDbController.golds;
-  RxMap currencies = {}.obs;
+  RxMap<String, double> currencies = <String, double>{}.obs;
   Gold? gold;
 
   Future<void> init() async {
@@ -114,12 +114,12 @@ class SaleController extends GetxController {
     goldCells[3] = gold!.cost.toString();
     goldCells[4] = gold!.salesGrams.toString();
     profitTlTextEditingController.value.text =
-        ((gold!.salesGrams - gold!.cost) * currencies['fineGoldSale'])
+        ((gold!.salesGrams - gold!.cost) * currencies['fineGoldSale']!)
             .toStringAsFixed(0);
     profitGramTextEditingController.value.text =
         (gold!.salesGrams - gold!.cost).toStringAsFixed(3);
     salesPriceTextEditingController.value.text =
-        (gold!.salesGrams * currencies['fineGoldSale']).toStringAsFixed(0);
+        (gold!.salesGrams * currencies['fineGoldSale']!).toStringAsFixed(0);
     salesGramTextEditingController.value.text =
         gold!.salesGrams.toStringAsFixed(3);
   }
@@ -128,13 +128,13 @@ class SaleController extends GetxController {
     if (gold != null) {
       int? profitTl = int.tryParse(value!);
       if (profitTl != null) {
-        double profitGram = profitTl / currencies['fineGoldSale'];
+        double profitGram = profitTl / currencies['fineGoldSale']!;
         profitGramTextEditingController.value.text =
             profitGram.toStringAsFixed(3);
         salesGramTextEditingController.value.text =
             (gold!.cost + profitGram).toStringAsFixed(3);
         salesPriceTextEditingController.value.text =
-            ((gold!.cost + profitGram) * currencies['fineGoldSale'])
+            ((gold!.cost + profitGram) * currencies['fineGoldSale']!)
                 .toStringAsFixed(0);
       } else if (value.isEmpty) {
         double profitGram = 0;
@@ -143,7 +143,7 @@ class SaleController extends GetxController {
         salesGramTextEditingController.value.text =
             (gold!.cost + profitGram).toStringAsFixed(3);
         salesPriceTextEditingController.value.text =
-            ((gold!.cost + profitGram) * currencies['fineGoldSale'])
+            ((gold!.cost + profitGram) * currencies['fineGoldSale']!)
                 .toStringAsFixed(0);
       }
     }
@@ -154,13 +154,13 @@ class SaleController extends GetxController {
       double? profitGram = double.tryParse(value!);
       if (profitGram != null) {
         double salesGram = gold!.cost + profitGram;
-        int salesPrice = (salesGram * currencies['fineGoldSale']).toInt();
+        int salesPrice = (salesGram * currencies['fineGoldSale']!).toInt();
         salesPriceTextEditingController.value.text = salesPrice.toString();
         salesGramTextEditingController.value.text =
             salesGram.toStringAsFixed(3);
       } else if (value.isEmpty) {
         double salesGram = gold!.cost;
-        int salesPrice = (salesGram * currencies['fineGoldSale']).toInt();
+        int salesPrice = (salesGram * currencies['fineGoldSale']!).toInt();
         salesPriceTextEditingController.value.text = salesPrice.toString();
         salesGramTextEditingController.value.text =
             salesGram.toStringAsFixed(3);
@@ -172,7 +172,7 @@ class SaleController extends GetxController {
     if (gold != null) {
       int? salesPrice = int.tryParse(value!);
       if (salesPrice != null) {
-        double salesGram = salesPrice / currencies['fineGoldSale'];
+        double salesGram = salesPrice / currencies['fineGoldSale']!;
         double profitGram = salesGram - gold!.cost;
         profitGramTextEditingController.value.text =
             profitGram.toStringAsFixed(3);
@@ -180,7 +180,7 @@ class SaleController extends GetxController {
             salesGram.toStringAsFixed(3);
       } else if (value.isEmpty) {
         double salesGram = gold!.cost;
-        int salesPrice = (salesGram * currencies['fineGoldSale']).toInt();
+        int salesPrice = (salesGram * currencies['fineGoldSale']!).toInt();
         salesPriceTextEditingController.value.text = salesPrice.toString();
         salesGramTextEditingController.value.text =
             salesGram.toStringAsFixed(3);
@@ -250,7 +250,7 @@ class SaleController extends GetxController {
   }
 
   Future<bool> addSale(int piece) async {
-    double costPrice = gold!.cost * currencies['fineGoldSale'];
+    double costPrice = gold!.cost * currencies['fineGoldSale']!;
     double soldPrice = double.parse(
       salesPriceTextEditingController.value.text,
     );
