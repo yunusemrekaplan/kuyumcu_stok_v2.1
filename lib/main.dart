@@ -9,6 +9,7 @@ import 'src/model/enum/my_route.dart';
 import 'src/view/inventory/inventory_screen.dart';
 import 'src/view/sale/sale_screen.dart';
 import 'src/view/add/add_gold_screen.dart';
+import 'src/view/sales/sales_screen.dart';
 import 'src/view/search/search_screen.dart';
 import 'src/view/theme/theme_controller.dart';
 import 'src/view/theme/theme_first.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoute.addGold.stringDefinition,
+      initialRoute: MyRoute.sales.stringDefinition,
       getPages: [
         GetPage(
           name: MyRoute.inventory.stringDefinition,
@@ -59,6 +60,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: MyRoute.sale.stringDefinition,
           page: () => SaleScreen(),
+          transition: Transition.fade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: MyRoute.sales.stringDefinition,
+          page: () => SalesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),

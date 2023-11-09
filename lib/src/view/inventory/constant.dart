@@ -9,10 +9,12 @@ const Color iconColor = Colors.white;
 const Color borderSideColor = Colors.white;
 const Color searchBoxColor = Colors.white30;
 const Color cursorColor = Colors.white;
+const snackBarErrorTextColor = Colors.white;
+const snackBarErrorBackgroundColor = Colors.red;
 
 const double columnSpacing = 25.0;
 const double borderSideWith = 0.7;
-const double borderRadiusCircularDouble = 25.0;
+const double radius = 25.0;
 const double searchBoxFontSize = 16.0;
 const double searchBoxContentLeftPadding = 5.0;
 const double searchBoxContentRightPadding = 5.0;
@@ -41,8 +43,7 @@ const EdgeInsets searchIconPadding = EdgeInsets.only(
   top: searchIconTopPadding,
 );
 
-BorderRadius borderRadiusCircular =
-    BorderRadius.circular(borderRadiusCircularDouble);
+BorderRadius borderRadius = BorderRadius.circular(radius);
 TableBorder tableBorder = TableBorder(
   horizontalInside: const BorderSide(
     width: borderSideWith,
@@ -52,5 +53,5 @@ TableBorder tableBorder = TableBorder(
     width: borderSideWith,
     color: borderSideColor,
   ),
-  borderRadius: borderRadiusCircular,
+  borderRadius: borderRadius,
 );

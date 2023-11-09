@@ -61,7 +61,7 @@ class InventoryScreen extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: ClipRRect(
-        borderRadius: borderRadiusCircular,
+        borderRadius: borderRadius,
         child: Theme(
           data: Theme.of(context).copyWith(
             cardColor: _themeController.canvasColor.value,

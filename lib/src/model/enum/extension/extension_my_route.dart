@@ -11,6 +11,8 @@ extension ToString on MyRoute {
         return '/search';
       case MyRoute.sale:
         return '/sale';
+      case MyRoute.sales:
+        return '/sales';
       case MyRoute.addGold:
         return '/addGold';
       default:
