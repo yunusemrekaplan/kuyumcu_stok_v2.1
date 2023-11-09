@@ -1,5 +1,10 @@
 import 'dart:math';
+import 'package:barcode/barcode.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
+import '../../model/data/gold.dart';
 import '../data/gold_db_controller.dart';
 
 class BarcodeService {
@@ -13,11 +18,15 @@ class BarcodeService {
 
   final _goldDbController = GoldDbController();
 
-  String firstCode = '978';
-  List<String> numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  final pageFormat = const PdfPageFormat(270, 36);
+  final barcodeFileName = 'barcode.pdf';
+  final bc = Barcode.isbn();
+  var pdf = pw.Document();
 
   String generateCode() {
-    String res = firstCode;
+    const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    String res = '978';
+
     int sum = 38; // 9*1 + 7*3 + 8*1
 
     var random = Random();
@@ -43,5 +52,88 @@ class BarcodeService {
         : generateCode();
 
     return res;
+  }
+
+  Future<bool> printBarcode(Gold gold) async {
+    try {
+      await buildBarcode(gold, pdf);
+      await Printing.layoutPdf(
+        onLayout: (PdfPageFormat format) async =>
+            await pdf.save(), // pdf.document.documentID,
+        name: barcodeFileName,
+      );
+      pdf = pw.Document();
+      return true;
+    } on Exception catch (e) {
+      print(e.toString());
+      return false;
+    }
+  }
+
+  Future<void> buildBarcode(Gold gold, pw.Document pdf) async {
+    String data = gold.barcodeText;
+
+    final svg = bc.toSvg(
+      data,
+      width: 60, // 75
+      height: 30, // 30
+      fontHeight: 6,
+    );
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: pageFormat,
+        build: (pw.Context context) => pw.Row(
+          children: [
+            pw.SizedBox(
+              width: 56,
+              height: 30,
+              child: pw.SvgImage(svg: svg),
+            ),
+            pw.SizedBox(width: 15),
+            pw.Column(
+              children: [
+                pw.SizedBox(height: 12),
+                pw.Text(
+                  gold.laborCost.toString(),
+                  style: const pw.TextStyle(
+                    fontSize: 5,
+                  ),
+                ),
+                pw.Text(
+                  gold.gram.toStringAsFixed(2),
+                  style: const pw.TextStyle(
+                    fontSize: 5,
+                  ),
+                ),
+              ],
+            ),
+            pw.SizedBox(width: 4.5),
+            pw.Column(children: [
+              pw.SizedBox(height: 12),
+              pw.Text(
+                '${gold.cost.toStringAsFixed(2)} Mgr',
+                style: const pw.TextStyle(
+                  fontSize: 5,
+                ),
+              ),
+              pw.Text(
+                '${gold.salesGrams.toStringAsFixed(2)} Sgr',
+                style: const pw.TextStyle(
+                  fontSize: 5,
+                ),
+              ),
+            ]),
+            pw.SizedBox(width: 4.5),
+            pw.Text(
+              '${gold.carat}K',
+              style: const pw.TextStyle(
+                fontSize: 5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

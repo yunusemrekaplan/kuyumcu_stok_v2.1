@@ -220,7 +220,7 @@ class FormRow extends StatelessWidget {
 
   ElevatedButton buildSaveAndPrintButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: _addGoldController.onPressedSaveAndPrintButton,
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,

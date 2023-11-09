@@ -18,6 +18,5 @@ class ThemeController extends GetxController {
       canvasColor.value = secThemeContainerColor;
       Get.changeTheme(themeSec);
     }
-    //update(); // TODO: update silmeyi deneyelim
   }
 }
