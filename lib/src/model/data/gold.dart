@@ -1,13 +1,9 @@
-import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_carat.dart';
-
-import '../enum/carat.dart';
-
 class Gold {
   late int id;
   late String barcodeText;
   late int piece;
   late String name;
-  late Carat carat; // x
+  late int carat; // x
   late double purityRate; // x => z
   late double laborCost; // k
   late double gram; // y
@@ -30,7 +26,7 @@ class Gold {
     barcodeText = json['barcodeText'];
     piece = json['piece'];
     name = json['name'];
-    carat = int.parse(json['carat'].toString()).caratDefinition!;
+    carat = json['carat'];
     gram = json['gram']!.toDouble();
     purityRate = json['purityRate']!.toDouble();
     laborCost = json['laborCost']!.toDouble();
@@ -43,7 +39,7 @@ class Gold {
       'barcodeText': barcodeText,
       'piece': piece,
       'name': name,
-      'carat': carat.intDefinition,
+      'carat': carat,
       'gram': gram,
       'purityRate': purityRate,
       'laborCost': laborCost,

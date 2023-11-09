@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/src/model/data/gold.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_carat.dart';
 import 'package:kuyumcu_stok_v2/src/output_formatters.dart';
 import 'package:kuyumcu_stok_v2/src/view/inventory/inventory_controller.dart';
 
@@ -44,7 +43,7 @@ class DataSource extends DataTableSource {
       buildBarcodeDataCell(context!, e.barcodeText),
       DataCell(Text(e.piece.toString())),
       DataCell(Text(name)),
-      DataCell(Text(e.carat.intDefinition.toString())),
+      DataCell(Text(e.carat.toString())),
       DataCell(Text(OutputFormatters.buildNumberFormat3f(e.laborCost))),
       DataCell(Text(OutputFormatters.buildNumberFormat2f(e.gram))),
       DataCell(Text(OutputFormatters.buildNumberFormat3f(e.cost))),

@@ -142,7 +142,9 @@ class FormRow extends StatelessWidget {
     return dropdownList.map(
       (value) {
         return DropdownMenuItem(
-          value: value,
+          value: value.split(' ').length == 2
+              ? (value.split(' ')[1] == 'Ayar' ? value.split(' ')[0] : value)
+              : value,
           child: Text(value.toString(), style: dropdownItemTextStyle),
         );
       },

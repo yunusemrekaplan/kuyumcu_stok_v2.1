@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../controller/data/gold_db_controller.dart';
 import '../../controller/service/barcode_service.dart';
 import '../../model/data/gold.dart';
+import '../../model/enum/my_route.dart';
 
 class AddGoldController extends GetxController {
   static final AddGoldController _instance = AddGoldController._internal();
@@ -40,8 +41,13 @@ class AddGoldController extends GetxController {
   final laborCostList = <String>[];
 
   Future<void> init() async {
+    clear();
     await _goldDbController.getAll();
 
+    buildList();
+  }
+
+  void buildList() {
     for (Gold element in _goldDbController.golds) {
       if (nameList.contains(element.name) == false) {
         nameList.add(element.name);
@@ -56,6 +62,7 @@ class AddGoldController extends GetxController {
     controller.text = value.toString();
 
     buildPurityRateForm(controller);
+    onChangedTextFormField(value);
   }
 
   void onChangedTextFormField(String? value) {
@@ -70,11 +77,46 @@ class AddGoldController extends GetxController {
   }
 
   Future<void> onPressedSaveButton() async {
+    if (barcodeController.value.text.isEmpty) {
+      barcodeController.value.text = BarcodeService().generateCode();
+    }
+
     isValidateFailed.value = !formKey.value.currentState!.validate();
 
     if (!isValidateFailed.value) {
-      Get.dialog(const CircularProgressIndicator());
-      //await addProduct();
+      Get.dialog(
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+      Gold gold = Gold(
+        barcodeText: barcodeController.value.text,
+        piece: int.parse(pieceController.value.text),
+        name: nameController.value.text,
+        carat: int.parse(caratController.value.text),
+        purityRate: double.parse(purityRateController.value.text),
+        laborCost: double.parse(laborCostController.value.text),
+        gram: double.parse(gramController.value.text),
+        cost: double.parse(costController.value.text),
+        salesGrams: double.parse(salesGramController.value.text),
+      );
+      await _goldDbController.add(gold.toJson());
+      Get.back();
+      Get.snackbar(
+        'Başarılı',
+        'Altın Eklendi',
+        colorText: Colors.white,
+        backgroundColor: Colors.green,
+      );
+      clear();
+      update([MyRoute.addGold]);
+    } else if (caratController.value.text.isEmpty) {
+      Get.snackbar(
+        'HATA!',
+        'Lütfen ayar seçiniz.',
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 
@@ -85,28 +127,40 @@ class AddGoldController extends GetxController {
   void buildPurityRateForm(TextEditingController controller) {
     if (controller == caratController.value) {
       switch (caratController.value.text) {
-        case '8 Ayar':
+        case '8':
           purityRateController.value.text = '0.333';
           break;
-        case '10 Ayar':
+        case '10':
           purityRateController.value.text = '0.417';
           break;
-        case '14 Ayar':
+        case '14':
           purityRateController.value.text = '0.585';
           break;
-        case '18 Ayar':
+        case '18':
           purityRateController.value.text = '0.750';
           break;
-        case '22 Ayar':
+        case '22':
           purityRateController.value.text = '0.916';
           break;
-        case '24 Ayar':
+        case '24':
           purityRateController.value.text = '0.995';
           break;
         default:
           purityRateController.value.text = '';
       }
     }
+  }
+
+  void clear() {
+    barcodeController.value.clear();
+    pieceController.value.clear();
+    nameController.value.clear();
+    caratController.value.clear();
+    purityRateController.value.clear();
+    laborCostController.value.clear();
+    gramController.value.clear();
+    costController.value.clear();
+    salesGramController.value.clear();
   }
 
   AutovalidateMode isAutoValidateMode() => isValidateFailed.value

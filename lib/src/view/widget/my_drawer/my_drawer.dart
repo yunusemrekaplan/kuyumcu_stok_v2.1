@@ -46,7 +46,7 @@ class _MyDrawerState extends State<MyDrawer> {
           ),
           ListTile(
             title: const Text(
-              drawerSales,
+              drawerAddGold,
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
