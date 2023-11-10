@@ -66,6 +66,7 @@ class AddGoldController extends GetxController {
     onChangedTextFormField(value);
   }
 
+  // cost calculation
   void onChangedTextFormField(String? value) {
     double? purityRate = double.tryParse(purityRateController.value.text);
     double? laborCost = double.tryParse(laborCostController.value.text);
@@ -78,38 +79,9 @@ class AddGoldController extends GetxController {
   }
 
   Future<void> onPressedSaveAndPrintButton() async {
-    if (barcodeController.value.text.isEmpty) {
-      barcodeController.value.text = _barcodeService.generateCode();
-    }
+    Gold? gold = await onSave();
 
-    isValidateFailed.value = !formKey.value.currentState!.validate();
-
-    if (!isValidateFailed.value) {
-      Get.dialog(
-        const Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-      Gold gold = Gold(
-        barcodeText: barcodeController.value.text,
-        piece: int.parse(pieceController.value.text),
-        name: nameController.value.text,
-        carat: int.parse(caratController.value.text),
-        purityRate: double.parse(purityRateController.value.text),
-        laborCost: double.parse(laborCostController.value.text),
-        gram: double.parse(gramController.value.text),
-        cost: double.parse(costController.value.text),
-        salesGrams: double.parse(salesGramController.value.text),
-      );
-      await _goldDbController.add(gold.toJson());
-      Get.back();
-      Get.snackbar(
-        'Başarılı',
-        'Altın Eklendi',
-        colorText: Colors.white,
-        backgroundColor: Colors.green,
-        duration: const Duration(milliseconds: 1000),
-      );
+    if (gold != null) {
       bool state = await _barcodeService.printBarcode(gold);
       clear();
       update([MyRoute.addGold]);
@@ -121,17 +93,17 @@ class AddGoldController extends GetxController {
           backgroundColor: Colors.red,
         );
       }
-    } else if (caratController.value.text.isEmpty) {
-      Get.snackbar(
-        'HATA!',
-        'Lütfen ayar seçiniz.',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
-      );
     }
   }
 
   Future<void> onPressedSaveButton() async {
+    await onSave();
+    clear();
+    update([MyRoute.addGold]);
+  }
+
+  Future<Gold?> onSave() async {
+    Gold? gold;
     if (barcodeController.value.text.isEmpty) {
       barcodeController.value.text = _barcodeService.generateCode();
     }
@@ -144,7 +116,7 @@ class AddGoldController extends GetxController {
           child: CircularProgressIndicator(),
         ),
       );
-      Gold gold = Gold(
+      gold = Gold(
         barcodeText: barcodeController.value.text,
         piece: int.parse(pieceController.value.text),
         name: nameController.value.text,
@@ -163,8 +135,7 @@ class AddGoldController extends GetxController {
         colorText: Colors.white,
         backgroundColor: Colors.green,
       );
-      clear();
-      update([MyRoute.addGold]);
+      return gold;
     } else if (caratController.value.text.isEmpty) {
       Get.snackbar(
         'HATA!',
@@ -173,6 +144,7 @@ class AddGoldController extends GetxController {
         backgroundColor: Colors.red,
       );
     }
+    return null;
   }
 
   void onGenerateBarcode() {
