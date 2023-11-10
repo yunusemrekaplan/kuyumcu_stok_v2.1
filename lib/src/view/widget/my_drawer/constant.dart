@@ -9,4 +9,5 @@ const fontSize = 22.0;
 const drawerInventory = 'Envanter';
 const drawerSale = 'Satış';
 const drawerSales = 'Satışlar';
+const drawerEntries = 'Girişler';
 const drawerAddGold = 'Altın Ekle';

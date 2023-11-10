@@ -5,6 +5,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../model/data/gold.dart';
+import '../../model/data/log.dart';
 import '../data/gold_db_controller.dart';
 
 class BarcodeService {
@@ -65,7 +66,11 @@ class BarcodeService {
       pdf = pw.Document();
       return true;
     } on Exception catch (e) {
-      print(e.toString());
+      Log(
+        dateTime: DateTime.now(),
+        state: 'Print Barcode',
+        errorMessage: e.toString(),
+      );
       return false;
     }
   }

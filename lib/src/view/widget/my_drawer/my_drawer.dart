@@ -62,6 +62,15 @@ class _MyDrawerState extends State<MyDrawer> {
               Get.offNamed(MyRoute.sales.stringDefinition);
             },
           ),
+          ListTile(
+            title: const Text(
+              drawerEntries,
+              style: TextStyle(color: textColor, fontSize: fontSize),
+            ),
+            onTap: () {
+              Get.offNamed(MyRoute.entries.stringDefinition);
+            },
+          ),
         ],
       ),
     );

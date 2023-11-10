@@ -7,9 +7,12 @@ import 'package:window_manager/window_manager.dart';
 
 import 'src/controller/data/db_helper.dart';
 import 'src/model/enum/my_route.dart';
+import 'src/view/entries/entries_controller.dart';
+import 'src/view/entries/entries_screen.dart';
 import 'src/view/inventory/inventory_screen.dart';
 import 'src/view/sale/sale_screen.dart';
 import 'src/view/add/add_gold_screen.dart';
+import 'src/view/sales/sales_controller.dart';
 import 'src/view/sales/sales_screen.dart';
 import 'src/view/search/search_screen.dart';
 import 'src/view/theme/theme_controller.dart';
@@ -38,13 +41,15 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final _themeController = Get.put(ThemeController());
+  final _entriesController = Get.put(EntriesController());
+  final _salesController = Get.put(SalesController());
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoute.sales.stringDefinition,
+      initialRoute: MyRoute.entries.stringDefinition,
       getPages: [
         GetPage(
           name: MyRoute.inventory.stringDefinition,
@@ -65,15 +70,21 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
+          name: MyRoute.addGold.stringDefinition,
+          page: () => AddGoldScreen(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
           name: MyRoute.sales.stringDefinition,
           page: () => SalesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: MyRoute.addGold.stringDefinition,
-          page: () => AddGoldScreen(),
-          transition: Transition.fadeIn,
+          name: MyRoute.entries.stringDefinition,
+          page: () => EntriesScreen(),
+          transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
       ],

@@ -13,7 +13,7 @@ import 'sales_controller.dart';
 
 class SalesScreen extends StatelessWidget {
   SalesScreen({super.key});
-  final _salesController = Get.put(SalesController());
+  final _salesController = Get.find<SalesController>();
   final _themeController = Get.find<ThemeController>();
 
   @override
@@ -58,7 +58,6 @@ class SalesScreen extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.02,
         ),
         Expanded(child: buildSalesTable()),
-        //Expanded(child: buildDataTable(context)),
       ],
     );
   }
@@ -135,6 +134,16 @@ class SalesScreen extends StatelessWidget {
     );
   }
 
+  List<DataColumn> buildColumns() {
+    return [
+      const DataColumn(label: Text('Tarihi')),
+      const DataColumn(label: Text('İsim')),
+      const DataColumn(label: Text('Satılan Adet'), numeric: true),
+      const DataColumn(label: Text('Kar (TL)'), numeric: true),
+      const DataColumn(label: Text('Kar (Gram)'), numeric: true),
+    ];
+  }
+
   RxList<DataRow> buildRows() {
     return _salesController.sales
         .map(
@@ -145,16 +154,6 @@ class SalesScreen extends StatelessWidget {
         )
         .toList()
         .obs;
-  }
-
-  List<DataColumn> buildColumns() {
-    return [
-      const DataColumn(label: Text('Tarihi')),
-      const DataColumn(label: Text('İsim')),
-      const DataColumn(label: Text('Satılan Adet'), numeric: true),
-      const DataColumn(label: Text('Kar (TL)'), numeric: true),
-      const DataColumn(label: Text('Kar (Gram)'), numeric: true),
-    ];
   }
 
   List<DataCell> buildCells(Sale sale) {

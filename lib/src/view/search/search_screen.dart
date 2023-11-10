@@ -24,7 +24,7 @@ class SearchScreen extends StatelessWidget {
   }
 
   Widget buildBody(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Arama'),
     );
   }
