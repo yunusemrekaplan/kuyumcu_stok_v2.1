@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import '../../model/data/sale.dart';
 import '../../model/enum/my_route.dart';
 import '../theme/theme_controller.dart';
 import '../widget/date_picker_row/date_picker_row.dart';
@@ -12,18 +13,14 @@ import 'sales_controller.dart';
 
 class SalesScreen extends StatelessWidget {
   SalesScreen({super.key});
-
   final _salesController = Get.put(SalesController());
   final _themeController = Get.find<ThemeController>();
-
-  DateTime endTime = DateTime.now();
-  DateTime startTime = DateTime.now().subtract(const Duration(days: 360));
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
       init: _salesController,
-      builder: (_) => buildScaffold(),
+      builder: (_) => buildScaffold(context),
       id: MyRoute.sales,
       initState: (_) => () {
         initializeDateFormatting('tr_TR', null);
@@ -31,11 +28,11 @@ class SalesScreen extends StatelessWidget {
     );
   }
 
-  Scaffold buildScaffold() {
+  Scaffold buildScaffold(BuildContext context) {
     return Scaffold(
       appBar: myAppBar('Satışlar'),
       body: FutureBuilder(
-        future: _salesController.getSales(),
+        future: _salesController.init(),
         builder: builder,
       ),
       drawer: const MyDrawer(),
@@ -53,7 +50,14 @@ class SalesScreen extends StatelessWidget {
   Column buildBody(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.02,
+        ),
         buildDateRow(),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.02,
+        ),
+        Expanded(child: buildSalesTable()),
         //Expanded(child: buildDataTable(context)),
       ],
     );
@@ -63,31 +67,32 @@ class SalesScreen extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: datePickerRowPadding,
           child: DatePickerRow(
             label: 'Başlangıç Tarihi:',
-            startTime: startTime,
-            endTime: endTime,
-            selectedTime: endTime,
+            selectedTime: _salesController.selectedStartTime,
+            dateController: _salesController.startDateController.value,
+            isSales: true,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: datePickerRowPadding,
           child: DatePickerRow(
             label: 'Bitiş Tarihi:',
-            startTime: startTime,
-            endTime: endTime,
-            selectedTime: endTime,
+            selectedTime: _salesController.selectedEndTime,
+            dateController: _salesController.endDateController.value,
+            isSales: true,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: datePickerRowPadding,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
                 borderRadius: borderRadius,
               ),
             ),
+            onPressed: _salesController.onTimeFilter,
             child: const Text(
               'Tarihi Onayla',
               style: TextStyle(
@@ -95,46 +100,87 @@ class SalesScreen extends StatelessWidget {
                 fontSize: 24,
               ),
             ),
-            onPressed: () {
-              /*
-              setState(() {
-                startTime = startDatePickerRow.initialTime;
-                endTime = endDatePickerRow.initialTime;
-                sales;
-              });
-              buildTotals();
-              */
-            },
           ),
         ),
       ],
     );
   }
 
-  /*
-  Container buildDataTable(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: _themeController.canvasColor.value,
-        borderRadius: borderRadius,
-      ),
-      child: SingleChildScrollView(
-        child: DataTable(
-          columns: buildDataColumns(),
-          rows: buildDataRow(),
+  Row buildSalesTable() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: _themeController.canvasColor.value,
+                borderRadius: borderRadius,
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Obx(
+                  () => DataTable(
+                    showCheckboxColumn: false,
+                    columns: buildColumns(),
+                    rows: buildRows(),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 
-  List<DataColumn> buildDataColumns() {
+  RxList<DataRow> buildRows() {
+    return _salesController.sales
+        .map(
+          (e) => DataRow(
+            cells: buildCells(e),
+            onSelectChanged: (selected) {},
+          ),
+        )
+        .toList()
+        .obs;
+  }
+
+  List<DataColumn> buildColumns() {
     return [
-      const DataColumn(label: Text('Tarihh')),
+      const DataColumn(label: Text('Tarihi')),
       const DataColumn(label: Text('İsim')),
-      const DataColumn(label: Text('Satılan Adet')),
-      const DataColumn(label: Text('Kar (TL)')),
-      const DataColumn(label: Text('Kar (Gram)')),
+      const DataColumn(label: Text('Satılan Adet'), numeric: true),
+      const DataColumn(label: Text('Kar (TL)'), numeric: true),
+      const DataColumn(label: Text('Kar (Gram)'), numeric: true),
     ];
   }
-  */
+
+  List<DataCell> buildCells(Sale sale) {
+    String name = sale.product['name'].length > 26
+        ? '${sale.product['name'].substring(0, 26)}...'
+        : sale.product['name'];
+    return [
+      DataCell(
+        Text(
+          sale.soldDate.toString().substring(0, 16),
+          style: const TextStyle(
+            fontSize: 22,
+            letterSpacing: 1.5,
+          ),
+        ),
+      ),
+      DataCell(Text(
+        name,
+        style: const TextStyle(
+          fontSize: 22,
+          letterSpacing: 1.5,
+        ),
+      )),
+      DataCell(Text(sale.piece.toString())),
+      DataCell(Text(sale.earnedProfitTL.toStringAsFixed(0))),
+      DataCell(Text(sale.earnedProfitGram.toStringAsFixed(2))),
+    ];
+  }
 }

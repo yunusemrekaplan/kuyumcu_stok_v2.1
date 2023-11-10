@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_my_route.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
@@ -29,7 +30,7 @@ Future<void> main() async {
 
   final dbHelper = DbHelper();
   await dbHelper.openDb();
-
+  initializeDateFormatting('tr_TR', null);
   runApp(MyApp());
 }
 
