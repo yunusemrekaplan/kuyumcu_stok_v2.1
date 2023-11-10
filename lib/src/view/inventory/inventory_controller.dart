@@ -11,6 +11,8 @@ class InventoryController extends GetxController {
   final _goldDbController = GoldDbController();
   final _barcodeService = BarcodeService();
 
+  late RxList<Gold> golds;
+
   double get totalGold {
     double sum = 0.0;
     for (var element in golds) {
@@ -18,8 +20,6 @@ class InventoryController extends GetxController {
     }
     return sum;
   }
-
-  late RxList<Gold> golds;
 
   Future<void> init() async {
     await getGolds();

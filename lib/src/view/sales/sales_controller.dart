@@ -30,6 +30,22 @@ class SalesController extends GetxController {
 
   late RxList<Sale> sales;
 
+  int get totalProfitTL {
+    int sum = 0;
+    for (var element in sales) {
+      sum += int.parse(element.earnedProfitTL.toStringAsFixed(0));
+    }
+    return sum;
+  }
+
+  double get totalProfitGram {
+    double sum = 0.0;
+    for (var element in sales) {
+      sum += element.earnedProfitGram;
+    }
+    return sum;
+  }
+
   Future<void> init() async {
     await getSales();
     sales = _saleDbController.sales

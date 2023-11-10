@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 import '../../model/data/sale.dart';
 import '../../model/enum/my_route.dart';
@@ -64,7 +65,11 @@ class SalesScreen extends StatelessWidget {
 
   Row buildDateRow() {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        const SizedBox(
+          width: 10,
+        ),
         Padding(
           padding: datePickerRowPadding,
           child: DatePickerRow(
@@ -96,10 +101,30 @@ class SalesScreen extends StatelessWidget {
               'Tarihi Onayla',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: 22,
               ),
             ),
           ),
+        ),
+        const SizedBox(
+          width: 15,
+        ),
+        Row(
+          children: [
+            Text(
+              'Toplam Kar (TL): ${NumberFormat(',###,###.#', 'en_US').format(
+                _salesController.totalProfitTL,
+              )} TL',
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(width: 20),
+            Text(
+              'Toplam Kar (Gr): ${NumberFormat.decimalPattern('en_US').format(
+                _salesController.totalProfitGram,
+              )} Gr',
+              style: const TextStyle(fontSize: 20),
+            ),
+          ],
         ),
       ],
     );
@@ -112,15 +137,15 @@ class SalesScreen extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: _themeController.canvasColor.value,
-                borderRadius: borderRadius,
-              ),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Obx(
-                  () => DataTable(
+            child: Obx(
+              () => Container(
+                decoration: BoxDecoration(
+                  color: _themeController.canvasColor.value,
+                  borderRadius: borderRadius,
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: DataTable(
                     showCheckboxColumn: false,
                     columns: buildColumns(),
                     rows: buildRows(),

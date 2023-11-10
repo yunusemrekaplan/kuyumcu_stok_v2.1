@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../model/enum/my_route.dart';
 import '../theme/theme_controller.dart';
@@ -53,7 +54,9 @@ class InventoryScreen extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Toplam Has:  ${_inventoryController.totalGold.toStringAsFixed(2)} Gr',
+                  'Toplam Has:  ${NumberFormat(',###,###.00', 'en_US').format(
+                    _inventoryController.totalGold,
+                  )} Gr',
                   style: const TextStyle(fontSize: 24),
                 ),
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../controller/data/gold_db_controller.dart';
 import '../../controller/data/sale_db_controller.dart';
@@ -66,6 +67,7 @@ class SaleController extends GetxController {
         snackBarSaleErrorText7,
         colorText: textColor,
         backgroundColor: snackBarErrorColor,
+        duration: const Duration(seconds: 1),
       );
     }
   }
@@ -78,6 +80,7 @@ class SaleController extends GetxController {
         snackBarSaleErrorText8,
         colorText: textColor,
         backgroundColor: snackBarErrorColor,
+        duration: const Duration(seconds: 1),
       );
     }
   }
@@ -100,6 +103,7 @@ class SaleController extends GetxController {
           snackBarSaleErrorText9,
           colorText: textColor,
           backgroundColor: snackBarErrorColor,
+          duration: const Duration(seconds: 1),
         );
       }
     }
@@ -110,9 +114,15 @@ class SaleController extends GetxController {
         ? '${gold!.name.substring(0, 26)}...'
         : gold!.name;
     goldCells[1] = gold!.piece.toString();
-    goldCells[2] = gold!.gram.toString();
-    goldCells[3] = gold!.cost.toString();
-    goldCells[4] = gold!.salesGrams.toString();
+    goldCells[2] = NumberFormat(',###,###.00', 'en_US').format(
+      gold!.gram,
+    );
+    goldCells[3] = NumberFormat(',###,###.00', 'en_US').format(
+      gold!.cost,
+    );
+    goldCells[4] = NumberFormat(',###,###.00', 'en_US').format(
+      gold!.salesGrams,
+    );
     profitTlTextEditingController.value.text =
         ((gold!.salesGrams - gold!.cost) * currencies['fineGoldSale']!)
             .toStringAsFixed(0);
@@ -155,12 +165,15 @@ class SaleController extends GetxController {
       if (profitGram != null) {
         double salesGram = gold!.cost + profitGram;
         int salesPrice = (salesGram * currencies['fineGoldSale']!).toInt();
+        profitTlTextEditingController.value.text =
+            (profitGram * currencies['fineGoldSale']!).toStringAsFixed(0);
         salesPriceTextEditingController.value.text = salesPrice.toString();
         salesGramTextEditingController.value.text =
             salesGram.toStringAsFixed(3);
       } else if (value.isEmpty) {
         double salesGram = gold!.cost;
         int salesPrice = (salesGram * currencies['fineGoldSale']!).toInt();
+        profitTlTextEditingController.value.text = '0';
         salesPriceTextEditingController.value.text = salesPrice.toString();
         salesGramTextEditingController.value.text =
             salesGram.toStringAsFixed(3);
@@ -174,16 +187,14 @@ class SaleController extends GetxController {
       if (salesPrice != null) {
         double salesGram = salesPrice / currencies['fineGoldSale']!;
         double profitGram = salesGram - gold!.cost;
+        profitTlTextEditingController.value.text =
+            (profitGram * currencies['fineGoldSale']!).toStringAsFixed(0);
         profitGramTextEditingController.value.text =
             profitGram.toStringAsFixed(3);
         salesGramTextEditingController.value.text =
             salesGram.toStringAsFixed(3);
       } else if (value.isEmpty) {
-        double salesGram = gold!.cost;
-        int salesPrice = (salesGram * currencies['fineGoldSale']!).toInt();
-        salesPriceTextEditingController.value.text = salesPrice.toString();
-        salesGramTextEditingController.value.text =
-            salesGram.toStringAsFixed(3);
+        salesGramTextEditingController.value.text = '0.000';
       }
     }
   }
@@ -201,6 +212,7 @@ class SaleController extends GetxController {
             snackBarSaleSuccessText,
             colorText: textColor,
             backgroundColor: snackBarSuccessColor,
+            duration: const Duration(seconds: 1),
           );
         } else {
           Get.snackbar(
@@ -208,6 +220,7 @@ class SaleController extends GetxController {
             snackBarSaleErrorText1,
             colorText: textColor,
             backgroundColor: snackBarErrorColor,
+            duration: const Duration(seconds: 1),
           );
         }
       } else {
@@ -216,6 +229,7 @@ class SaleController extends GetxController {
           snackBarSaleErrorText2,
           colorText: textColor,
           backgroundColor: snackBarErrorColor,
+          duration: const Duration(seconds: 1),
         );
       }
     } else {
@@ -224,6 +238,7 @@ class SaleController extends GetxController {
         snackBarSaleErrorText3,
         colorText: textColor,
         backgroundColor: snackBarErrorColor,
+        duration: const Duration(seconds: 1),
       );
     }
   }
@@ -235,6 +250,7 @@ class SaleController extends GetxController {
         snackBarSaleErrorText4,
         colorText: textColor,
         backgroundColor: snackBarErrorColor,
+        duration: const Duration(seconds: 1),
       );
       return false;
     } else if (piece == 0) {
@@ -243,6 +259,7 @@ class SaleController extends GetxController {
         snackBarSaleErrorText5,
         colorText: textColor,
         backgroundColor: snackBarErrorColor,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -281,6 +298,7 @@ class SaleController extends GetxController {
         snackBarSaleErrorText6,
         colorText: textColor,
         backgroundColor: snackBarErrorColor,
+        duration: const Duration(seconds: 1),
       );
     }
   }

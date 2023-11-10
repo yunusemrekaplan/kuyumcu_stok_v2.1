@@ -13,4 +13,4 @@ const datePickerBoxHeight = 200.0;
 
 final borderRadius = BorderRadius.circular(radius);
 
-const datePickerRowPadding = EdgeInsets.only(left: 20.0, right: 20.0);
+const datePickerRowPadding = EdgeInsets.only(left: 10.0, right: 0.0);

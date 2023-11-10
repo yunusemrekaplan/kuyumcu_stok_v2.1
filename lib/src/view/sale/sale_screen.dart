@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../model/enum/my_route.dart';
 import '../theme/theme_controller.dart';
@@ -346,7 +347,9 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['fineGoldBuy']!.toStringAsFixed(2),
+              NumberFormat(',###,###.00', 'en_US').format(
+                _saleController.currencies['fineGoldBuy']!,
+              ),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -354,7 +357,9 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['fineGoldSale']!.toStringAsFixed(2),
+              NumberFormat(',###,###.00', 'en_US').format(
+                _saleController.currencies['fineGoldSale']!,
+              ),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -375,7 +380,9 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['usdBuy']!.toStringAsFixed(2),
+              NumberFormat(',###,###.00', 'en_US').format(
+                _saleController.currencies['usdBuy']!,
+              ),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -383,7 +390,9 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['usdSale']!.toStringAsFixed(2),
+              NumberFormat(',###,###.00', 'en_US').format(
+                _saleController.currencies['usdSale']!,
+              ),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -404,7 +413,9 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['eurBuy']!.toStringAsFixed(2),
+              NumberFormat(',###,###.00', 'en_US').format(
+                _saleController.currencies['eurBuy']!,
+              ),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
@@ -412,7 +423,9 @@ class SaleScreen extends StatelessWidget {
           ),
           DataCell(
             Text(
-              _saleController.currencies['eurSale']!.toStringAsFixed(2),
+              NumberFormat(',###,###.00', 'en_US').format(
+                _saleController.currencies['eurSale']!,
+              ),
               style: const TextStyle(
                 fontSize: currencyTableCellFontSize,
               ),
