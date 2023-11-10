@@ -9,8 +9,9 @@ const Color iconColor = Colors.white;
 const Color borderSideColor = Colors.white;
 const Color searchBoxColor = Colors.white30;
 const Color cursorColor = Colors.white;
-const snackBarErrorTextColor = Colors.white;
+const snackBarTextColor = Colors.white;
 const snackBarErrorBackgroundColor = Colors.red;
+const snackBarSuccessBackgroundColor = Colors.green;
 
 const double columnSpacing = 25.0;
 const double borderSideWith = 0.7;

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/src/model/data/gold.dart';
-import 'package:kuyumcu_stok_v2/src/output_formatters.dart';
 import 'package:kuyumcu_stok_v2/src/view/inventory/inventory_controller.dart';
 
 class DataSource extends DataTableSource {
@@ -37,17 +36,17 @@ class DataSource extends DataTableSource {
 
   List<DataCell> buildDataCells(Gold e, BuildContext? context) {
     int len = e.name.length;
-    String tripleDot = (len > 22 ? '...' : '');
-    String name = e.name.substring(0, (len > 22 ? 22 : len)) + tripleDot;
+    String tripleDot = (len > 28 ? '...' : '');
+    String name = e.name.substring(0, (len > 28 ? 28 : len)) + tripleDot;
     return [
       buildBarcodeDataCell(context!, e.barcodeText),
       DataCell(Text(e.piece.toString())),
       DataCell(Text(name)),
       DataCell(Text(e.carat.toString())),
-      DataCell(Text(OutputFormatters.buildNumberFormat3f(e.laborCost))),
-      DataCell(Text(OutputFormatters.buildNumberFormat2f(e.gram))),
-      DataCell(Text(OutputFormatters.buildNumberFormat3f(e.cost))),
-      DataCell(Text(OutputFormatters.buildNumberFormat2f(e.salesGrams))),
+      DataCell(Text(e.laborCost.toStringAsFixed(3))),
+      DataCell(Text(e.gram.toStringAsFixed(3))),
+      DataCell(Text(e.cost.toStringAsFixed(3))),
+      DataCell(Text(e.salesGrams.toStringAsFixed(3))),
       buildActionsDataCell(context, e),
     ];
   }
@@ -67,29 +66,32 @@ class DataSource extends DataTableSource {
     );
   }
 
-  DataCell buildActionsDataCell(BuildContext context, Gold e) {
+  DataCell buildActionsDataCell(BuildContext context, Gold gold) {
     return DataCell(
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => _inventoryController.printGold(gold),
+            icon: const Icon(Icons.print),
+            color: Colors.white70,
+            iconSize: 30,
+          ),
+          IconButton(
+            onPressed: () => _inventoryController.deleteGold(gold),
             icon: const Icon(Icons.delete),
             color: Colors.red,
             iconSize: 30,
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.edit),
+            icon: Icon(
+              Icons.edit,
+              color: Colors.white.withOpacity(0.2),
+            ),
             color: Colors.white70,
             iconSize: 30,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.print),
-            color: Colors.white70,
-            iconSize: 30,
-          )
         ],
       ),
     );

@@ -134,6 +134,7 @@ class AddGoldController extends GetxController {
         'Altın Eklendi',
         colorText: Colors.white,
         backgroundColor: Colors.green,
+        duration: const Duration(milliseconds: 900),
       );
       return gold;
     } else if (caratController.value.text.isEmpty) {

@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoute.entries.stringDefinition,
+      initialRoute: MyRoute.inventory.stringDefinition,
       getPages: [
         GetPage(
           name: MyRoute.inventory.stringDefinition,

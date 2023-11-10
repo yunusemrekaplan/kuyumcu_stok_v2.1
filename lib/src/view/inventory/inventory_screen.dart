@@ -28,7 +28,7 @@ class InventoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: myAppBar('Envanter'),
       body: FutureBuilder(
-        future: _inventoryController.getGolds(),
+        future: _inventoryController.init(),
         builder: builder,
       ),
       drawer: const MyDrawer(),
@@ -37,10 +37,31 @@ class InventoryScreen extends StatelessWidget {
 
   Widget builder(BuildContext context, AsyncSnapshot<void> snapshot) {
     if (snapshot.connectionState == ConnectionState.done) {
-      return buildDataTableRow(context);
+      return buildBody(context);
     } else {
       return const Center(child: CircularProgressIndicator());
     }
+  }
+
+  Column buildBody(BuildContext context) {
+    return Column(
+      children: [
+        buildDataTableRow(context),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 25.0),
+            child: Row(
+              children: [
+                Text(
+                  'Toplam Has:  ${_inventoryController.totalGold.toStringAsFixed(2)} Gr',
+                  style: const TextStyle(fontSize: 24),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildDataTableRow(BuildContext context) {
@@ -82,7 +103,7 @@ class InventoryScreen extends StatelessWidget {
       columns: buildColumns(context),
       columnSpacing: columnSpacing,
       showCheckboxColumn: showCheckboxColumn,
-      rowsPerPage: MediaQuery.of(context).size.height ~/ 60,
+      rowsPerPage: (MediaQuery.of(context).size.height - 100) ~/ 60,
       dataRowMinHeight: 45,
       dataRowMaxHeight: 45,
       showFirstLastButtons: true,
@@ -112,53 +133,4 @@ class InventoryScreen extends StatelessWidget {
       const DataColumn(label: Text('')),
     ];
   }
-
-  /*
-  DataColumn buildActionsDataColumn(BuildContext context) {
-    return DataColumn(
-      label: Stack(
-        children: [
-          buildTextFormField(context),
-          buildSearchIcon(),
-        ],
-      ),
-    );
-  }
-
-  
-  Container buildTextFormField(BuildContext context) {
-    return Container(
-      color: searchBoxColor,
-      child: TextFormField(
-        focusNode: _inventoryController.searchFocusNode,
-        controller: _inventoryController.searchController,
-        style: searchBoxTextStyle,
-        decoration: InputDecoration(
-          contentPadding: searchBoxContentPadding,
-          constraints: BoxConstraints(
-            maxHeight: searchBoxMaxHeight,
-            minWidth: searchBoxMinWidth,
-            maxWidth: MediaQuery.of(context).size.width * 0.167,
-          ),
-        ),
-        cursorColor: cursorColor,
-        onChanged: _inventoryController.onSearch,
-        //onFieldSubmitted: _inventoryController.onSearch,
-      ),
-    );
-  }
-
-  Padding buildSearchIcon() {
-    return Padding(
-      padding: searchIconPadding,
-      child: Obx(
-        () => Icon(
-          searchIcon,
-          color: _inventoryController.searchIconColor.value,
-        ),
-      ),
-    );
-  }
-
-  */
 }
