@@ -21,6 +21,66 @@ class InventoryController extends GetxController {
     return sum;
   }
 
+  double get totalNumberOfEight {
+    double sum = 0.0;
+    for (var gold in golds) {
+      if (gold.carat == 8) {
+        sum += gold.piece;
+      }
+    }
+    return sum;
+  }
+
+  double get totalNumberOfTen {
+    double sum = 0.0;
+    for (var gold in golds) {
+      if (gold.carat == 10) {
+        sum += gold.piece;
+      }
+    }
+    return sum;
+  }
+
+  double get totalNumberOfFourteen {
+    double sum = 0.0;
+    for (var gold in golds) {
+      if (gold.carat == 14) {
+        sum += gold.piece;
+      }
+    }
+    return sum;
+  }
+
+  double get totalNumberOfEighteen {
+    double sum = 0.0;
+    for (var gold in golds) {
+      if (gold.carat == 18) {
+        sum += gold.piece;
+      }
+    }
+    return sum;
+  }
+
+  double get totalNumberOfTwentyTwo {
+    double sum = 0.0;
+    for (var gold in golds) {
+      if (gold.carat == 22) {
+        sum += gold.piece;
+      }
+    }
+    return sum;
+  }
+
+  double get totalNumberOfTwentyFour {
+    double sum = 0.0;
+    for (var gold in golds) {
+      if (gold.carat == 24) {
+        sum += gold.piece;
+      }
+    }
+    return sum;
+  }
+
   Future<void> init() async {
     await getGolds();
     golds = _goldDbController.golds

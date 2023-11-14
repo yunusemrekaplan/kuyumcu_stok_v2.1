@@ -3,6 +3,7 @@ enum RouteName {
   inventory,
   gold,
   search,
+  calculator,
   addGold,
   sale,
   sales,

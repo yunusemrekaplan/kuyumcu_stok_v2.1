@@ -8,6 +8,7 @@ import 'src/controller/data/db_helper.dart';
 import 'src/model/extension/extension_route_name.dart';
 import 'src/model/enum/my_route.dart';
 import 'src/view/add/add_screen.dart';
+import 'src/view/calculator/calculator_screen.dart';
 import 'src/view/entries/entries_controller.dart';
 import 'src/view/entries/entries_screen.dart';
 import 'src/view/information/gold_screen.dart';
@@ -67,6 +68,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: RouteName.search.stringDefinition,
           page: () => SearchScreen(),
+          transition: Transition.fade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: RouteName.calculator.stringDefinition,
+          page: () => CalculatorScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),

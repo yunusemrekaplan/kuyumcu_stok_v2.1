@@ -11,6 +11,8 @@ extension ToString on RouteName {
         return '/gold';
       case RouteName.search:
         return '/search';
+      case RouteName.calculator:
+        return '/calculator';
       case RouteName.sale:
         return '/sale';
       case RouteName.sales:

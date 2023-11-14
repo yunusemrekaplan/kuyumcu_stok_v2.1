@@ -52,13 +52,51 @@ class InventoryScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 25.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Toplam Has:  ${NumberFormat(',###,###.00', 'en_US').format(
                     _inventoryController.totalGold,
                   )} Gr',
-                  style: const TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 20),
                 ),
+                Text(
+                  '    24 Ayar:  ${NumberFormat(',###,###', 'en_US').format(
+                    _inventoryController.totalNumberOfTwentyFour,
+                  )} Adet',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Text(
+                  '    22 Ayar:  ${NumberFormat(',###,###', 'en_US').format(
+                    _inventoryController.totalNumberOfTwentyTwo,
+                  )} Adet',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Text(
+                  '    18 Ayar:  ${NumberFormat(',###,###', 'en_US').format(
+                    _inventoryController.totalNumberOfEighteen,
+                  )} Adet',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Text(
+                  '   14 Ayar:  ${NumberFormat(',###,###', 'en_US').format(
+                    _inventoryController.totalNumberOfFourteen,
+                  )} Adet',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Text(
+                  '   10 Ayar:  ${NumberFormat(',###,###', 'en_US').format(
+                    _inventoryController.totalNumberOfTen,
+                  )} Adet',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Text(
+                  '   8 Ayar:  ${NumberFormat(',###,###', 'en_US').format(
+                    _inventoryController.totalNumberOfEight,
+                  )} Adet',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                SizedBox(width: 25),
               ],
             ),
           ),

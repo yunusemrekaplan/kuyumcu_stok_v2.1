@@ -138,7 +138,9 @@ class FormRow extends StatelessWidget {
       style: dropdownButtonTextStyle,
       padding: dropdownPadding,
       underline: Container(
-          height: dropdownButtonUnderlineHeight, color: underLineColor),
+        height: dropdownButtonUnderlineHeight,
+        color: underLineColor,
+      ),
       items: buildDropDownMenuItemList(),
       onChanged: (value) =>
           _addGoldController.onChangedDropDownButton(value, controller),
