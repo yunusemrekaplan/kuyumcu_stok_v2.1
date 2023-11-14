@@ -15,7 +15,7 @@ import 'sales_controller.dart';
 
 class SalesScreen extends StatelessWidget {
   SalesScreen({super.key});
-  final _salesController = Get.find<SalesController>();
+  final _salesController = Get.put(SalesController());
   final _themeController = Get.find<ThemeController>();
 
   @override
@@ -77,7 +77,11 @@ class SalesScreen extends StatelessWidget {
             label: 'Başlangıç Tarihi:',
             selectedTime: _salesController.selectedStartTime,
             dateController: _salesController.startDateController.value,
-            isSales: true,
+            onDateChanged: (state, selectedTime) {
+              state
+                  ? _salesController.selectedEndTime = selectedTime
+                  : _salesController.selectedStartTime = selectedTime;
+            },
           ),
         ),
         Padding(
@@ -86,7 +90,11 @@ class SalesScreen extends StatelessWidget {
             label: 'Bitiş Tarihi:',
             selectedTime: _salesController.selectedEndTime,
             dateController: _salesController.endDateController.value,
-            isSales: true,
+            onDateChanged: (state, selectedTime) {
+              state
+                  ? _salesController.selectedEndTime = selectedTime
+                  : _salesController.selectedStartTime = selectedTime;
+            },
           ),
         ),
         Padding(

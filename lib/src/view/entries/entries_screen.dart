@@ -13,7 +13,7 @@ import 'entries_controller.dart';
 
 class EntriesScreen extends StatelessWidget {
   EntriesScreen({super.key});
-  final _entriesController = Get.find<EntriesController>();
+  final _entriesController = Get.put(EntriesController());
   final _themeController = Get.find<ThemeController>();
 
   @override
@@ -71,7 +71,11 @@ class EntriesScreen extends StatelessWidget {
             label: 'Başlangıç Tarihi:',
             selectedTime: _entriesController.selectedStartTime,
             dateController: _entriesController.startDateController.value,
-            isEntries: true,
+            onDateChanged: (state, selectedTime) {
+              state
+                  ? _entriesController.selectedEndTime = selectedTime
+                  : _entriesController.selectedStartTime = selectedTime;
+            },
           ),
         ),
         Padding(
@@ -80,7 +84,11 @@ class EntriesScreen extends StatelessWidget {
             label: 'Bitiş Tarihi:',
             selectedTime: _entriesController.selectedEndTime,
             dateController: _entriesController.endDateController.value,
-            isEntries: true,
+            onDateChanged: (state, selectedTime) {
+              state
+                  ? _entriesController.selectedEndTime = selectedTime
+                  : _entriesController.selectedStartTime = selectedTime;
+            },
           ),
         ),
         Padding(

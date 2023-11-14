@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../entries/entries_controller.dart';
-import '../../sales/sales_controller.dart';
 import 'constant.dart';
 
 class DatePickerRow extends StatelessWidget {
@@ -14,18 +12,13 @@ class DatePickerRow extends StatelessWidget {
     required this.label,
     required this.selectedTime,
     required this.dateController,
-    this.isSales = false,
-    this.isEntries = false,
+    required this.onDateChanged,
   });
 
-  late bool isSales;
-  late bool isEntries;
   late String label;
   late DateTime selectedTime;
   late TextEditingController dateController;
-
-  final _salesController = Get.find<SalesController>();
-  final _entriesController = Get.find<EntriesController>();
+  late void Function(bool, DateTime) onDateChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -89,13 +82,7 @@ class DatePickerRow extends StatelessWidget {
             dateController.text = DateFormat.yMd('tr-Tr').format(
               selectedTime,
             );
-            isSales
-                ? (state
-                    ? _salesController.selectedEndTime = selectedTime
-                    : _salesController.selectedStartTime = selectedTime)
-                : (state
-                    ? _entriesController.selectedEndTime = selectedTime
-                    : _entriesController.selectedStartTime = selectedTime);
+            onDateChanged(state, selectedTime);
           },
         ),
       ),

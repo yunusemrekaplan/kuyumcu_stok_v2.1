@@ -43,8 +43,6 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final _themeController = Get.put(ThemeController());
-  final _entriesController = Get.put(EntriesController());
-  final _salesController = Get.put(SalesController());
 
   // This widget is the root of your application.
   @override
