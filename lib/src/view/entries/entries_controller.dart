@@ -67,6 +67,6 @@ class EntriesController extends GetxController {
             entry.enteredDate.isBefore(selectedEndTime))
         .toList()
         .obs;
-    update([MyRoute.entries]);
+    update([RouteName.entries]);
   }
 }

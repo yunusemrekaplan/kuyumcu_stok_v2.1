@@ -7,7 +7,7 @@ import '../widget/form_row/form_row.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
 import 'constant.dart';
-import 'add_gold_controller.dart';
+import 'add_controller.dart';
 
 class AddGoldScreen extends StatelessWidget {
   AddGoldScreen({super.key});
@@ -20,7 +20,7 @@ class AddGoldScreen extends StatelessWidget {
     return GetBuilder(
       init: _addGoldController,
       builder: (_) => buildScaffold(context),
-      id: MyRoute.addGold,
+      id: RouteName.addGold,
     );
   }
 
@@ -67,6 +67,7 @@ class AddGoldScreen extends StatelessWidget {
       autovalidateMode: _addGoldController.isAutoValidateMode(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: buildFromChildren,
       ),
     );
@@ -144,6 +145,21 @@ class AddGoldScreen extends StatelessWidget {
         text: costText,
         hintText: costHintText,
         isDecimal: true,
+        widget: Row(
+          children: [
+            const Text(
+              'Adet İşçilik: ',
+              style: TextStyle(fontSize: 26),
+            ),
+            Obx(
+              () => IconButton(
+                icon: _addGoldController.icon.value,
+                iconSize: 50,
+                onPressed: _addGoldController.changeIcon,
+              ),
+            ),
+          ],
+        ),
       ),
       SizedBox(height: Get.height * paddingBoxHeight),
       FormRow(

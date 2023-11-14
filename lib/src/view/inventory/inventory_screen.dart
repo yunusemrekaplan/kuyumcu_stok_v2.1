@@ -21,7 +21,7 @@ class InventoryScreen extends StatelessWidget {
     return GetBuilder(
       init: _inventoryController,
       builder: (_) => buildScaffold(),
-      id: MyRoute.inventory,
+      id: RouteName.inventory,
     );
   }
 

@@ -2,7 +2,7 @@
 
 import 'dart:io';
 import 'package:kuyumcu_stok_v2/src/model/data/log.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_log_state.dart';
+import 'package:kuyumcu_stok_v2/src/model/extension/extension_log_state.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';

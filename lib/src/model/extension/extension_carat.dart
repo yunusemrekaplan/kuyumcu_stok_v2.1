@@ -1,4 +1,4 @@
-import '../carat.dart';
+import '../enum/carat.dart';
 
 extension ToPurityRate on Carat {
   double get purityRateDefinition {

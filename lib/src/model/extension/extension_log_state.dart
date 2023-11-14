@@ -1,4 +1,4 @@
-import '../log_state.dart';
+import '../enum/log_state.dart';
 
 extension ToString on LogState {
   String get stringDefinition {

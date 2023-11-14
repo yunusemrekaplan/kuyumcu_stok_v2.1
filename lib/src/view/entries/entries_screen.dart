@@ -21,7 +21,7 @@ class EntriesScreen extends StatelessWidget {
     return GetBuilder(
       init: _entriesController,
       builder: (_) => buildScaffold(context),
-      id: MyRoute.entries,
+      id: RouteName.entries,
       initState: (_) => () {
         initializeDateFormatting('tr_TR', null);
       },

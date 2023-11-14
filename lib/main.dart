@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_my_route.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'src/controller/data/db_helper.dart';
+import 'src/model/extension/extension_route_name.dart';
 import 'src/model/enum/my_route.dart';
+import 'src/view/add/add_screen.dart';
 import 'src/view/entries/entries_controller.dart';
 import 'src/view/entries/entries_screen.dart';
+import 'src/view/information/gold_screen.dart';
 import 'src/view/inventory/inventory_screen.dart';
 import 'src/view/sale/sale_screen.dart';
-import 'src/view/add/add_gold_screen.dart';
 import 'src/view/sales/sales_controller.dart';
 import 'src/view/sales/sales_screen.dart';
 import 'src/view/search/search_screen.dart';
@@ -49,40 +50,46 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoute.inventory.stringDefinition,
+      initialRoute: RouteName.inventory.stringDefinition,
       getPages: [
         GetPage(
-          name: MyRoute.inventory.stringDefinition,
+          name: RouteName.inventory.stringDefinition,
           page: () => InventoryScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: MyRoute.search.stringDefinition,
+          name: RouteName.gold.stringDefinition,
+          page: () => GoldScreen(),
+          transition: Transition.fade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: RouteName.search.stringDefinition,
           page: () => SearchScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: MyRoute.sale.stringDefinition,
+          name: RouteName.sale.stringDefinition,
           page: () => SaleScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: MyRoute.addGold.stringDefinition,
+          name: RouteName.addGold.stringDefinition,
           page: () => AddGoldScreen(),
-          transition: Transition.fadeIn,
+          transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: MyRoute.sales.stringDefinition,
+          name: RouteName.sales.stringDefinition,
           page: () => SalesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: MyRoute.entries.stringDefinition,
+          name: RouteName.entries.stringDefinition,
           page: () => EntriesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),

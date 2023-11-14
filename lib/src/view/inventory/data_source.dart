@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/src/model/data/gold.dart';
+import 'package:kuyumcu_stok_v2/src/model/extension/extension_route_name.dart';
 import 'package:kuyumcu_stok_v2/src/view/inventory/inventory_controller.dart';
+
+import '../../model/enum/my_route.dart';
 
 class DataSource extends DataTableSource {
   final _inventoryController = Get.find<InventoryController>();
@@ -30,6 +33,12 @@ class DataSource extends DataTableSource {
     if (index >= _inventoryController.golds.length) return null;
     return DataRow.byIndex(
       index: index,
+      onSelectChanged: (value) {
+        Get.toNamed(
+          RouteName.gold.stringDefinition,
+          arguments: _inventoryController.golds[index].toJson(),
+        );
+      },
       cells: buildDataCells(_inventoryController.golds[index], Get.context),
     );
   }

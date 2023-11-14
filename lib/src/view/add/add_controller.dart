@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../calculator.dart';
 import '../../controller/data/gold_db_controller.dart';
 import '../../controller/service/barcode_service.dart';
 import '../../model/data/gold.dart';
@@ -17,6 +18,7 @@ class AddGoldController extends GetxController {
 
   final _goldDbController = GoldDbController();
   final _barcodeService = BarcodeService();
+  final _calculator = Calculator();
   final formKey = GlobalKey<FormState>().obs;
   final barcodeController = TextEditingController().obs;
   final pieceController = TextEditingController().obs;
@@ -30,7 +32,7 @@ class AddGoldController extends GetxController {
 
   final isValidateFailed = false.obs;
   final pieceList = <String>['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  final nameList = <String>[];
+  final nameList = <String>[]; // TODO: küçük harf büyük harf duyarlılığı
   final caratList = <String>[
     '8 Ayar',
     '10 Ayar',
@@ -41,6 +43,13 @@ class AddGoldController extends GetxController {
   ];
   final laborCostList = <String>[];
 
+  Rx<Icon> icon = Icon(
+    Icons.toggle_off,
+    color: Colors.white.withOpacity(0.5),
+  ).obs;
+
+  bool isWeddingRing = false;
+
   Future<void> init() async {
     clear();
     await _goldDbController.getAll();
@@ -50,8 +59,8 @@ class AddGoldController extends GetxController {
 
   void buildList() {
     for (Gold element in _goldDbController.golds) {
-      if (nameList.contains(element.name) == false) {
-        nameList.add(element.name);
+      if (nameList.contains(element.name.toLowerCase()) == false) {
+        nameList.add(element.name.toLowerCase());
       }
       if (laborCostList.contains(element.laborCost.toString()) == false) {
         laborCostList.add(element.laborCost.toString());
@@ -73,7 +82,13 @@ class AddGoldController extends GetxController {
     double? gram = double.tryParse(gramController.value.text);
 
     if (purityRate != null && laborCost != null && gram != null) {
-      String cost = ((purityRate + laborCost) * gram).toStringAsFixed(3);
+      String cost = isWeddingRing
+          ? _calculator
+              .calculateWeddingRingCost(gram, laborCost, purityRate)
+              .toStringAsFixed(3)
+          : _calculator
+              .calculateCost(gram, laborCost, purityRate)
+              .toStringAsFixed(3);
       costController.value.text = cost;
     }
   }
@@ -84,7 +99,7 @@ class AddGoldController extends GetxController {
     if (gold != null) {
       bool state = await _barcodeService.printBarcode(gold);
       clear();
-      update([MyRoute.addGold]);
+      update([RouteName.addGold]);
       if (!state) {
         Get.snackbar(
           'HATA!',
@@ -99,7 +114,7 @@ class AddGoldController extends GetxController {
   Future<void> onPressedSaveButton() async {
     await onSave();
     clear();
-    update([MyRoute.addGold]);
+    update([RouteName.addGold]);
   }
 
   Future<Gold?> onSave() async {
@@ -189,6 +204,23 @@ class AddGoldController extends GetxController {
     gramController.value.clear();
     costController.value.clear();
     salesGramController.value.clear();
+  }
+
+  void changeIcon() {
+    if (isWeddingRing) {
+      icon.value = Icon(
+        Icons.toggle_off,
+        color: Colors.white.withOpacity(0.5),
+      );
+      isWeddingRing = false;
+    } else {
+      icon.value = const Icon(
+        Icons.toggle_on,
+        color: Colors.white,
+      );
+      isWeddingRing = true;
+    }
+    onChangedTextFormField(null);
   }
 
   AutovalidateMode isAutoValidateMode() => isValidateFailed.value

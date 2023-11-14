@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../add/add_gold_controller.dart';
+import '../../add/add_controller.dart';
 import '../../validator.dart';
 import 'constant.dart';
 
@@ -22,6 +22,7 @@ class FormRow extends StatelessWidget {
     this.isBarcode = false,
     this.isSaveButton = false,
     this.dropdownList = const [],
+    this.widget,
   });
 
   final _addGoldController = Get.find<AddGoldController>();
@@ -44,6 +45,7 @@ class FormRow extends StatelessWidget {
   late String? hintText;
   late String? dropdownHintText;
   late List<String> dropdownList;
+  late Widget? widget;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,12 @@ class FormRow extends StatelessWidget {
       children: [
         buildTextBox(),
         buildTextFormField(),
-        buildDropDownButtonOrContainer(),
+        widget != null
+            ? SizedBox(
+                width: dropdownWidth,
+                child: widget,
+              )
+            : buildDropDownButtonOrContainer(),
       ],
     );
   }

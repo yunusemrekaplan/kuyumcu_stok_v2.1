@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_my_route.dart';
+import 'package:kuyumcu_stok_v2/src/model/extension/extension_route_name.dart';
 
 import '../../../model/enum/my_route.dart';
 import 'constant.dart';
@@ -32,7 +32,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(MyRoute.inventory.stringDefinition);
+              Get.offNamed(RouteName.inventory.stringDefinition);
             },
           ),
           ListTile(
@@ -41,7 +41,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(MyRoute.sale.stringDefinition);
+              Get.offNamed(RouteName.sale.stringDefinition);
             },
           ),
           ListTile(
@@ -50,7 +50,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(MyRoute.addGold.stringDefinition);
+              Get.offNamed(RouteName.addGold.stringDefinition);
             },
           ),
           ListTile(
@@ -59,7 +59,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(MyRoute.sales.stringDefinition);
+              Get.offNamed(RouteName.sales.stringDefinition);
             },
           ),
           ListTile(
@@ -68,7 +68,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(MyRoute.entries.stringDefinition);
+              Get.offNamed(RouteName.entries.stringDefinition);
             },
           ),
         ],

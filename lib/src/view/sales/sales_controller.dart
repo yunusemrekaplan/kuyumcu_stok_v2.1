@@ -83,6 +83,6 @@ class SalesController extends GetxController {
             sale.soldDate.isBefore(selectedEndTime))
         .toList()
         .obs;
-    update([MyRoute.sales]);
+    update([RouteName.sales]);
   }
 }

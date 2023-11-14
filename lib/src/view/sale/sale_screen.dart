@@ -27,7 +27,7 @@ class SaleScreen extends StatelessWidget {
     return GetBuilder(
       init: _saleController,
       builder: (_) => buildScaffold(context),
-      id: MyRoute.sale,
+      id: RouteName.sale,
     );
   }
 

@@ -89,7 +89,7 @@ class InventoryController extends GetxController {
                 );
               }
 
-              update([MyRoute.inventory]);
+              update([RouteName.inventory]);
             },
             child: const Text('Evet'),
           ),

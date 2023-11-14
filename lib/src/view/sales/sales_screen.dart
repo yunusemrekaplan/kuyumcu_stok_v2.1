@@ -9,6 +9,7 @@ import '../theme/theme_controller.dart';
 import '../widget/date_picker_row/date_picker_row.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
+import '../../model/extension/extension_route_name.dart';
 import 'constant.dart';
 import 'sales_controller.dart';
 
@@ -22,7 +23,7 @@ class SalesScreen extends StatelessWidget {
     return GetBuilder(
       init: _salesController,
       builder: (_) => buildScaffold(context),
-      id: MyRoute.sales,
+      id: RouteName.sales,
       initState: (_) => () {
         initializeDateFormatting('tr_TR', null);
       },
@@ -174,7 +175,12 @@ class SalesScreen extends StatelessWidget {
         .map(
           (e) => DataRow(
             cells: buildCells(e),
-            onSelectChanged: (selected) {},
+            onSelectChanged: (selected) {
+              Get.toNamed(
+                RouteName.gold.stringDefinition,
+                arguments: e.product,
+              );
+            },
           ),
         )
         .toList()

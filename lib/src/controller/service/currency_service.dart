@@ -1,7 +1,7 @@
 import 'package:html/dom.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
-import 'package:kuyumcu_stok_v2/src/model/enum/extension/extension_log_state.dart';
+import 'package:kuyumcu_stok_v2/src/model/extension/extension_log_state.dart';
 
 import '../../model/data/log.dart';
 import '../../model/enum/log_state.dart';
