@@ -55,6 +55,15 @@ class _MyDrawerState extends State<MyDrawer> {
           ),
           ListTile(
             title: const Text(
+              drawerSearch,
+              style: TextStyle(color: textColor, fontSize: fontSize),
+            ),
+            onTap: () {
+              Get.offNamed(RouteName.search.stringDefinition);
+            },
+          ),
+          ListTile(
+            title: const Text(
               drawerCalculator,
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),

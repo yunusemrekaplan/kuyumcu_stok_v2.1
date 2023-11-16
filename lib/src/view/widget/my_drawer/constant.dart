@@ -12,3 +12,4 @@ const drawerSales = 'Satışlar';
 const drawerEntries = 'Girişler';
 const drawerAddGold = 'Altın Ekle';
 const drawerCalculator = 'Has Hesaplama';
+const drawerSearch = 'Arama';
