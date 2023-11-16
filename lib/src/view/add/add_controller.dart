@@ -97,7 +97,7 @@ class AddGoldController extends GetxController {
     Gold? gold = await onSave();
 
     if (gold != null) {
-      bool state = await _barcodeService.printBarcode(gold);
+      bool state = await _barcodeService.printBarcode(gold.toJson());
       clear();
       update([RouteName.addGold]);
       if (!state) {

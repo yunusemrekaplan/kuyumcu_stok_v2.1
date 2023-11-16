@@ -169,7 +169,7 @@ class InventoryController extends GetxController {
   */
 
   Future<void> printGold(Gold gold) async {
-    bool state = await _barcodeService.printBarcode(gold);
+    bool state = await _barcodeService.printBarcode(gold.toJson());
 
     if (state) {
       Get.snackbar(

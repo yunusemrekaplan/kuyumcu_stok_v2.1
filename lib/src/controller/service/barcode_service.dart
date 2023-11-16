@@ -4,7 +4,6 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
-import '../../model/data/gold.dart';
 import '../../model/data/log.dart';
 import '../data/gold_db_controller.dart';
 
@@ -55,7 +54,7 @@ class BarcodeService {
     return res;
   }
 
-  Future<bool> printBarcode(Gold gold) async {
+  Future<bool> printBarcode(Map<String, dynamic> gold) async {
     try {
       await buildBarcode(gold, pdf);
       await Printing.layoutPdf(
@@ -75,8 +74,8 @@ class BarcodeService {
     }
   }
 
-  Future<void> buildBarcode(Gold gold, pw.Document pdf) async {
-    String data = gold.barcodeText;
+  Future<void> buildBarcode(Map<String, dynamic> gold, pw.Document pdf) async {
+    String data = gold['barcodeText'];
 
     final svg = bc.toSvg(
       data,
@@ -100,13 +99,13 @@ class BarcodeService {
               children: [
                 pw.SizedBox(height: 12),
                 pw.Text(
-                  gold.laborCost.toString(),
+                  gold['laborCost'].toString(),
                   style: const pw.TextStyle(
                     fontSize: 5,
                   ),
                 ),
                 pw.Text(
-                  gold.gram.toStringAsFixed(2),
+                  gold['gram'].toStringAsFixed(2),
                   style: const pw.TextStyle(
                     fontSize: 5,
                   ),
@@ -117,13 +116,13 @@ class BarcodeService {
             pw.Column(children: [
               pw.SizedBox(height: 12),
               pw.Text(
-                '${gold.cost.toStringAsFixed(2)} Mgr',
+                '${gold['cost'].toStringAsFixed(2)} Mgr',
                 style: const pw.TextStyle(
                   fontSize: 5,
                 ),
               ),
               pw.Text(
-                '${gold.salesGrams.toStringAsFixed(2)} Sgr',
+                '${gold['salesGrams'].toStringAsFixed(2)} Sgr',
                 style: const pw.TextStyle(
                   fontSize: 5,
                 ),
@@ -131,7 +130,7 @@ class BarcodeService {
             ]),
             pw.SizedBox(width: 4.5),
             pw.Text(
-              '${gold.carat}K',
+              '${gold['carat']}K',
               style: const pw.TextStyle(
                 fontSize: 5,
               ),

@@ -56,19 +56,6 @@ class GoldScreen extends StatelessWidget {
     );
   }
 
-  List<DataCell> get buildCells {
-    return <DataCell>[
-      DataCell(Text(_goldController.gold['barcodeText'])),
-      DataCell(Text(_goldController.gold['name'])),
-      DataCell(Text(_goldController.gold['carat'].toString())),
-      DataCell(Text(_goldController.gold['gram'].toString())),
-      DataCell(Text(_goldController.gold['purityRate'].toString())),
-      DataCell(Text(_goldController.gold['laborCost'].toString())),
-      DataCell(Text(_goldController.gold['cost'].toString())),
-      DataCell(Text(_goldController.gold['salesGrams'].toString())),
-    ];
-  }
-
   List<DataColumn> get buildColumns {
     return const <DataColumn>[
       DataColumn(label: Text('Barkod')),
@@ -79,6 +66,37 @@ class GoldScreen extends StatelessWidget {
       DataColumn(label: Text('İşçilik')),
       DataColumn(label: Text('Maliyet')),
       DataColumn(label: Text('Satış Gramı')),
+      DataColumn(label: Text('')),
     ];
+  }
+
+  List<DataCell> get buildCells {
+    return <DataCell>[
+      DataCell(Text(_goldController.gold['barcodeText'])),
+      DataCell(Text(_goldController.gold['name'])),
+      DataCell(Text(_goldController.gold['carat'].toString())),
+      DataCell(Text(_goldController.gold['gram'].toString())),
+      DataCell(Text(_goldController.gold['purityRate'].toString())),
+      DataCell(Text(_goldController.gold['laborCost'].toString())),
+      DataCell(Text(_goldController.gold['cost'].toString())),
+      DataCell(Text(_goldController.gold['salesGrams'].toString())),
+      buildActionsDataCell(),
+    ];
+  }
+
+  DataCell buildActionsDataCell() {
+    return DataCell(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          IconButton(
+            onPressed: _goldController.printGold,
+            icon: const Icon(Icons.print),
+            color: Colors.white70,
+            iconSize: 30,
+          ),
+        ],
+      ),
+    );
   }
 }
