@@ -4,7 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 import '../../model/data/sale.dart';
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 import '../theme/theme_controller.dart';
 import '../widget/date_picker_row/date_picker_row.dart';
 import '../widget/my_app_bar.dart';
@@ -23,7 +23,7 @@ class SalesScreen extends StatelessWidget {
     return GetBuilder(
       init: _salesController,
       builder: (_) => buildScaffold(context),
-      id: RouteName.sales,
+      id: AppRoute.sales,
       initState: (_) => () {
         initializeDateFormatting('tr_TR', null);
       },
@@ -185,7 +185,7 @@ class SalesScreen extends StatelessWidget {
             cells: buildCells(e),
             onSelectChanged: (selected) {
               Get.toNamed(
-                RouteName.gold.stringDefinition,
+                AppRoute.gold.stringDefinition,
                 arguments: e.product,
               );
             },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 import '../theme/theme_controller.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
@@ -21,7 +21,7 @@ class InventoryScreen extends StatelessWidget {
     return GetBuilder(
       init: _inventoryController,
       builder: (_) => buildScaffold(),
-      id: RouteName.inventory,
+      id: AppRoute.inventory,
     );
   }
 

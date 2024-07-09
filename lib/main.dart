@@ -6,7 +6,7 @@ import 'package:window_manager/window_manager.dart';
 
 import 'src/controller/data/db_helper.dart';
 import 'src/model/extension/extension_route_name.dart';
-import 'src/model/enum/my_route.dart';
+import 'src/model/enum/app_route.dart';
 import 'src/view/add/add_screen.dart';
 import 'src/view/calculator/calculator_screen.dart';
 import 'src/view/entries/entries_screen.dart';
@@ -40,59 +40,59 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _themeController = Get.put(ThemeController());
+  final themeController = Get.put(ThemeController());
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.inventory.stringDefinition,
+      initialRoute: AppRoute.inventory.stringDefinition,
       getPages: [
         GetPage(
-          name: RouteName.inventory.stringDefinition,
+          name: AppRoute.inventory.stringDefinition,
           page: () => InventoryScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.gold.stringDefinition,
+          name: AppRoute.gold.stringDefinition,
           page: () => GoldScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.search.stringDefinition,
+          name: AppRoute.search.stringDefinition,
           page: () => SearchScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.calculator.stringDefinition,
+          name: AppRoute.calculator.stringDefinition,
           page: () => CalculatorScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.sale.stringDefinition,
+          name: AppRoute.sale.stringDefinition,
           page: () => SaleScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.addGold.stringDefinition,
+          name: AppRoute.addGold.stringDefinition,
           page: () => AddGoldScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.sales.stringDefinition,
+          name: AppRoute.sales.stringDefinition,
           page: () => SalesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.entries.stringDefinition,
+          name: AppRoute.entries.stringDefinition,
           page: () => EntriesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),

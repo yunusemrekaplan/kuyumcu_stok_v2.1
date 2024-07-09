@@ -1,4 +1,4 @@
-enum RouteName {
+enum AppRoute {
   home,
   inventory,
   gold,

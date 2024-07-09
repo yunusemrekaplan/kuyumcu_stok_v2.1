@@ -1,7 +1,7 @@
 // ignore_for_file: control_flow_in_finally, depend_on_referenced_packages
 
 import 'dart:io';
-import 'package:kuyumcu_stok_v2/src/model/data/log.dart';
+import 'package:kuyumcu_stok_v2/src/model/log.dart';
 import 'package:kuyumcu_stok_v2/src/model/extension/extension_log_state.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';

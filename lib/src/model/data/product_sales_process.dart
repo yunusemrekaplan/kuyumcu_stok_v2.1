@@ -1,0 +1,3 @@
+class ProductSalesProcess extends ProductProcess {
+
+}

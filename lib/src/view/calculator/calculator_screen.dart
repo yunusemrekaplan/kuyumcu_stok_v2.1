@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/my_route.dart';
+import 'package:kuyumcu_stok_v2/src/model/enum/app_route.dart';
 import 'package:kuyumcu_stok_v2/src/model/extension/extension_route_name.dart';
 import 'package:kuyumcu_stok_v2/src/view/widget/my_app_bar.dart';
 import 'package:kuyumcu_stok_v2/src/view/widget/my_drawer/my_drawer.dart';
@@ -19,7 +19,7 @@ class CalculatorScreen extends StatelessWidget {
     return GetBuilder(
       init: _calculatorController,
       builder: (_) => buildScaffold(context),
-      id: RouteName.calculator.stringDefinition,
+      id: AppRoute.calculator.stringDefinition,
     );
   }
 

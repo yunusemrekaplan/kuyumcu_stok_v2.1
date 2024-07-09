@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../controller/data/entry_db_controller.dart';
 import '../../model/data/entry.dart';
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 
 class EntriesController extends GetxController {
   final _entryDbController = EntryDbController();
@@ -67,6 +67,6 @@ class EntriesController extends GetxController {
             entry.enteredDate.isBefore(selectedEndTime))
         .toList()
         .obs;
-    update([RouteName.entries]);
+    update([AppRoute.entries]);
   }
 }

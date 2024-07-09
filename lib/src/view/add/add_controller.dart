@@ -5,7 +5,7 @@ import '../../calculator.dart';
 import '../../controller/data/gold_db_controller.dart';
 import '../../controller/service/barcode_service.dart';
 import '../../model/data/gold.dart';
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 
 class AddGoldController extends GetxController {
   static final AddGoldController _instance = AddGoldController._internal();
@@ -99,7 +99,7 @@ class AddGoldController extends GetxController {
     if (gold != null) {
       bool state = await _barcodeService.printBarcode(gold.toJson());
       clear();
-      update([RouteName.addGold]);
+      update([AppRoute.addGold]);
       if (!state) {
         Get.snackbar(
           'HATA!',
@@ -114,7 +114,7 @@ class AddGoldController extends GetxController {
   Future<void> onPressedSaveButton() async {
     await onSave();
     clear();
-    update([RouteName.addGold]);
+    update([AppRoute.addGold]);
   }
 
   Future<Gold?> onSave() async {
