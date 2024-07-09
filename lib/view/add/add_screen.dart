@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+<<<<<<< HEAD:lib/view/add/add_screen.dart
 import '../../model/enum/my_route.dart';
 import '../../theme/theme_controller.dart';
+=======
+import '../../model/enum/app_route.dart';
+import '../theme/theme_controller.dart';
+>>>>>>> new_version:lib/src/view/add/add_screen.dart
 import '../widget/form_row/form_row.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
@@ -20,7 +25,7 @@ class AddGoldScreen extends StatelessWidget {
     return GetBuilder(
       init: _addGoldController,
       builder: (_) => buildScaffold(context),
-      id: RouteName.addGold,
+      id: AppRoute.addGold,
     );
   }
 

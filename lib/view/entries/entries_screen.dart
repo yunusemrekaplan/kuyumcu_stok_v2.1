@@ -3,8 +3,13 @@ import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import '../../model/data/entry.dart';
+<<<<<<< HEAD:lib/view/entries/entries_screen.dart
 import '../../model/enum/my_route.dart';
 import '../../theme/theme_controller.dart';
+=======
+import '../../model/enum/app_route.dart';
+import '../theme/theme_controller.dart';
+>>>>>>> new_version:lib/src/view/entries/entries_screen.dart
 import '../widget/date_picker_row/date_picker_row.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
@@ -21,7 +26,7 @@ class EntriesScreen extends StatelessWidget {
     return GetBuilder(
       init: _entriesController,
       builder: (_) => buildScaffold(context),
-      id: RouteName.entries,
+      id: AppRoute.entries,
       initState: (_) => () {
         initializeDateFormatting('tr_TR', null);
       },

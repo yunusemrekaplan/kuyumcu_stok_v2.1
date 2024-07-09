@@ -5,7 +5,7 @@ import 'package:kuyumcu_stok_v2/model/data/gold.dart';
 import 'package:kuyumcu_stok_v2/model/extension/extension_route_name.dart';
 import 'package:kuyumcu_stok_v2/view/inventory/inventory_controller.dart';
 
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 
 class DataSource extends DataTableSource {
   final _inventoryController = Get.find<InventoryController>();
@@ -35,7 +35,7 @@ class DataSource extends DataTableSource {
       index: index,
       onSelectChanged: (value) {
         Get.toNamed(
-          RouteName.gold.stringDefinition,
+          AppRoute.gold.stringDefinition,
           arguments: _inventoryController.golds[index].toJson(),
         );
       },

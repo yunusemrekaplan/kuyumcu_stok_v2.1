@@ -1,25 +1,25 @@
-import '../enum/my_route.dart';
+import '../enum/app_route.dart';
 
-extension ToString on RouteName {
+extension ToString on AppRoute {
   String get stringDefinition {
     switch (this) {
-      case RouteName.home:
+      case AppRoute.home:
         return '/home';
-      case RouteName.inventory:
+      case AppRoute.inventory:
         return '/inventory';
-      case RouteName.gold:
+      case AppRoute.gold:
         return '/gold';
-      case RouteName.search:
+      case AppRoute.search:
         return '/search';
-      case RouteName.calculator:
+      case AppRoute.calculator:
         return '/calculator';
-      case RouteName.sale:
+      case AppRoute.sale:
         return '/sale';
-      case RouteName.sales:
+      case AppRoute.sales:
         return '/sales';
-      case RouteName.entries:
+      case AppRoute.entries:
         return '/entries';
-      case RouteName.addGold:
+      case AppRoute.addGold:
         return '/addGold';
       default:
         return 'Unknown route';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/model/extension/extension_route_name.dart';
 
-import '../../../model/enum/my_route.dart';
+import '../../../model/enum/app_route.dart';
 import 'constant.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -32,7 +32,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.inventory.stringDefinition);
+              Get.offNamed(AppRoute.inventory.stringDefinition);
             },
           ),
           ListTile(
@@ -41,7 +41,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.sale.stringDefinition);
+              Get.offNamed(AppRoute.sale.stringDefinition);
             },
           ),
           ListTile(
@@ -50,7 +50,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.addGold.stringDefinition);
+              Get.offNamed(AppRoute.addGold.stringDefinition);
             },
           ),
           ListTile(
@@ -59,7 +59,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.search.stringDefinition);
+              Get.offNamed(AppRoute.search.stringDefinition);
             },
           ),
           ListTile(
@@ -68,7 +68,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.calculator.stringDefinition);
+              Get.offNamed(AppRoute.calculator.stringDefinition);
             },
           ),
           ListTile(
@@ -77,7 +77,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.sales.stringDefinition);
+              Get.offNamed(AppRoute.sales.stringDefinition);
             },
           ),
           ListTile(
@@ -86,7 +86,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(color: textColor, fontSize: fontSize),
             ),
             onTap: () {
-              Get.offNamed(RouteName.entries.stringDefinition);
+              Get.offNamed(AppRoute.entries.stringDefinition);
             },
           ),
         ],

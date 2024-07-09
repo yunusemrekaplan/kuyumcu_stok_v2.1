@@ -3,8 +3,13 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kuyumcu_stok_v2/util/dimensions.dart';
 
+<<<<<<< HEAD:lib/view/inventory/inventory_screen.dart
 import '../../model/enum/my_route.dart';
 import '../../theme/theme_controller.dart';
+=======
+import '../../model/enum/app_route.dart';
+import '../theme/theme_controller.dart';
+>>>>>>> new_version:lib/src/view/inventory/inventory_screen.dart
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
 import 'constant.dart';
@@ -22,7 +27,7 @@ class InventoryScreen extends StatelessWidget {
     return GetBuilder(
       init: _inventoryController,
       builder: (_) => buildScaffold(),
-      id: RouteName.inventory,
+      id: AppRoute.inventory,
     );
   }
 

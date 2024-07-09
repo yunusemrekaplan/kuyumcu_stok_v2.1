@@ -4,7 +4,7 @@ import 'package:kuyumcu_stok_v2/model/extension/extension_route_name.dart';
 
 import '../../controller/data/gold_db_controller.dart';
 import '../../model/data/gold.dart';
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 
 class SearchScreenController extends GetxController {
   final barcodeController = TextEditingController();
@@ -67,7 +67,7 @@ class SearchScreenController extends GetxController {
         DataRow(
           onSelectChanged: (value) {
             Get.toNamed(
-              RouteName.gold.stringDefinition,
+              AppRoute.gold.stringDefinition,
               arguments: gold.toJson(),
             );
           },

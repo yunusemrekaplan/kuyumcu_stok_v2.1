@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../controller/data/sale_db_controller.dart';
 import '../../model/data/sale.dart';
-import '../../model/enum/my_route.dart';
+import '../../model/enum/app_route.dart';
 
 class SalesController extends GetxController {
   final _saleDbController = SaleDbController();
@@ -83,6 +83,6 @@ class SalesController extends GetxController {
             sale.soldDate.isBefore(selectedEndTime))
         .toList()
         .obs;
-    update([RouteName.sales]);
+    update([AppRoute.sales]);
   }
 }

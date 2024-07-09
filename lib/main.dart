@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
 
+<<<<<<< HEAD
 import 'controller/data/db_helper.dart';
 import 'model/extension/extension_route_name.dart';
 import 'model/enum/my_route.dart';
@@ -19,6 +20,23 @@ import 'theme/theme_controller.dart';
 import 'theme/theme_first.dart';
 import 'theme/theme_sec.dart';
 import 'window_options.dart';
+=======
+import 'src/controller/data/db_helper.dart';
+import 'src/model/extension/extension_route_name.dart';
+import 'src/model/enum/app_route.dart';
+import 'src/view/add/add_screen.dart';
+import 'src/view/calculator/calculator_screen.dart';
+import 'src/view/entries/entries_screen.dart';
+import 'src/view/information/gold_screen.dart';
+import 'src/view/inventory/inventory_screen.dart';
+import 'src/view/sale/sale_screen.dart';
+import 'src/view/sales/sales_screen.dart';
+import 'src/view/search/search_screen.dart';
+import 'src/view/theme/theme_controller.dart';
+import 'src/view/theme/theme_first.dart';
+import 'src/view/theme/theme_sec.dart';
+import 'src/window_options.dart';
+>>>>>>> new_version
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,52 +65,52 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.inventory.stringDefinition,
+      initialRoute: AppRoute.inventory.stringDefinition,
       getPages: [
         GetPage(
-          name: RouteName.inventory.stringDefinition,
+          name: AppRoute.inventory.stringDefinition,
           page: () => InventoryScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.gold.stringDefinition,
+          name: AppRoute.gold.stringDefinition,
           page: () => GoldScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.search.stringDefinition,
+          name: AppRoute.search.stringDefinition,
           page: () => SearchScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.calculator.stringDefinition,
+          name: AppRoute.calculator.stringDefinition,
           page: () => CalculatorScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.sale.stringDefinition,
+          name: AppRoute.sale.stringDefinition,
           page: () => SaleScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.addGold.stringDefinition,
+          name: AppRoute.addGold.stringDefinition,
           page: () => AddGoldScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.sales.stringDefinition,
+          name: AppRoute.sales.stringDefinition,
           page: () => SalesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
-          name: RouteName.entries.stringDefinition,
+          name: AppRoute.entries.stringDefinition,
           page: () => EntriesScreen(),
           transition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 500),

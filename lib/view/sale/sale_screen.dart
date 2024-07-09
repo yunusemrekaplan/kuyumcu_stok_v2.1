@@ -3,8 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+<<<<<<< HEAD:lib/view/sale/sale_screen.dart
 import '../../model/enum/my_route.dart';
 import '../../theme/theme_controller.dart';
+=======
+import '../../model/enum/app_route.dart';
+import '../theme/theme_controller.dart';
+>>>>>>> new_version:lib/src/view/sale/sale_screen.dart
 import '../widget/my_text_form_field/my_text_form_field.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/my_drawer/my_drawer.dart';
@@ -27,7 +32,7 @@ class SaleScreen extends StatelessWidget {
     return GetBuilder(
       init: _saleController,
       builder: (_) => buildScaffold(context),
-      id: RouteName.sale,
+      id: AppRoute.sale,
     );
   }
 

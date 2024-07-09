@@ -1,7 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 
+<<<<<<< HEAD:lib/controller/service/currency_service.dart
 import 'package:http/http.dart' as http;
+=======
+import '../../model/log.dart';
+import '../../model/enum/log_state.dart';
+>>>>>>> new_version:lib/src/controller/service/currency_service.dart
 import 'constant.dart';
 
 class CurrencyService {
