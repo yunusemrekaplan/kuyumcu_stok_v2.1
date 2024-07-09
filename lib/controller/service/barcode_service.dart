@@ -1,10 +1,10 @@
 import 'dart:math';
 import 'package:barcode/barcode.dart';
+import 'package:kuyumcu_stok_v2/model/data/log.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
-import '../../model/log.dart';
 import '../data/gold_db_controller.dart';
 
 class BarcodeService {
