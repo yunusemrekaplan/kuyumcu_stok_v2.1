@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD:lib/view/calculator/calculator_screen.dart
-import 'package:kuyumcu_stok_v2/model/enum/my_route.dart';
-import 'package:kuyumcu_stok_v2/model/extension/extension_route_name.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/model/extension/extension_app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
 import 'package:kuyumcu_stok_v2/view/widget/my_app_bar.dart';
 import 'package:kuyumcu_stok_v2/view/widget/my_drawer/my_drawer.dart';
-=======
-import 'package:kuyumcu_stok_v2/src/model/enum/app_route.dart';
-import 'package:kuyumcu_stok_v2/src/model/extension/extension_route_name.dart';
-import 'package:kuyumcu_stok_v2/src/view/widget/my_app_bar.dart';
-import 'package:kuyumcu_stok_v2/src/view/widget/my_drawer/my_drawer.dart';
->>>>>>> new_version:lib/src/view/calculator/calculator_screen.dart
 
-import '../../theme/theme_controller.dart';
 import 'calculator_controller.dart';
 import 'constant.dart';
 

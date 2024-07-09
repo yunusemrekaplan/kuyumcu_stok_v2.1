@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
+import 'package:kuyumcu_stok_v2/view/information/gold_controller.dart';
 import 'package:kuyumcu_stok_v2/view/widget/my_app_bar.dart';
-
-<<<<<<< HEAD:lib/view/information/gold_screen.dart
-import '../../model/enum/my_route.dart';
-import '../../theme/theme_controller.dart';
-=======
-import '../../model/enum/app_route.dart';
-import '../theme/theme_controller.dart';
->>>>>>> new_version:lib/src/view/information/gold_screen.dart
-import 'gold_controller.dart';
 
 class GoldScreen extends StatelessWidget {
   GoldScreen({super.key});

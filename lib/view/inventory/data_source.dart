@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/model/data/gold.dart';
-import 'package:kuyumcu_stok_v2/model/extension/extension_route_name.dart';
+import 'package:kuyumcu_stok_v2/model/extension/extension_app_route.dart';
 import 'package:kuyumcu_stok_v2/view/inventory/inventory_controller.dart';
 
 import '../../model/enum/app_route.dart';

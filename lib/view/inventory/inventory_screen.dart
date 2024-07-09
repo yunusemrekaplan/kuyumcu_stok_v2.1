@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
 import 'package:kuyumcu_stok_v2/util/dimensions.dart';
-
-<<<<<<< HEAD:lib/view/inventory/inventory_screen.dart
-import '../../model/enum/my_route.dart';
-import '../../theme/theme_controller.dart';
-=======
-import '../../model/enum/app_route.dart';
-import '../theme/theme_controller.dart';
->>>>>>> new_version:lib/src/view/inventory/inventory_screen.dart
-import '../widget/my_app_bar.dart';
-import '../widget/my_drawer/my_drawer.dart';
-import 'constant.dart';
-import 'data_source.dart';
-import 'inventory_controller.dart';
+import 'package:kuyumcu_stok_v2/view/inventory/constant.dart';
+import 'package:kuyumcu_stok_v2/view/inventory/data_source.dart';
+import 'package:kuyumcu_stok_v2/view/inventory/inventory_controller.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_app_bar.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_drawer/my_drawer.dart';
 
 class InventoryScreen extends StatelessWidget {
   InventoryScreen({super.key});
@@ -88,7 +82,7 @@ class InventoryScreen extends StatelessWidget {
                   '8 Ayar:  ${getFormattedNumber(_inventoryController.totalNumberOfEight)} Adet',
                   style: const TextStyle(fontSize: Dimension.fontSizeLarge),
                 ),
-                SizedBox(width: 25),
+                const SizedBox(width: 25),
               ],
             ),
           ),

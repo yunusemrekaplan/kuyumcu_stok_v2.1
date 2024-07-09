@@ -1,7 +1,6 @@
-import 'package:kuyumcu_stok_v2/src/model/abstracts/product_base.dart';
-import 'package:kuyumcu_stok_v2/src/model/data/brand.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/carat.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/product_type.dart';
+import 'package:kuyumcu_stok_v2/model/abstracts/product_base.dart';
+import 'package:kuyumcu_stok_v2/model/enum/carat.dart';
+import 'package:kuyumcu_stok_v2/model/enum/product_type.dart';
 
 class JewelryProduct extends ProductBase {
   /// Level of purity of gold. [Carat] enum.

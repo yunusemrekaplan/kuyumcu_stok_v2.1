@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-<<<<<<< HEAD:lib/view/sale/sale_screen.dart
-import '../../model/enum/my_route.dart';
-import '../../theme/theme_controller.dart';
-=======
-import '../../model/enum/app_route.dart';
-import '../theme/theme_controller.dart';
->>>>>>> new_version:lib/src/view/sale/sale_screen.dart
-import '../widget/my_text_form_field/my_text_form_field.dart';
-import '../widget/my_app_bar.dart';
-import '../widget/my_drawer/my_drawer.dart';
-import 'constant.dart';
-import 'sale_controller.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
+import 'package:kuyumcu_stok_v2/view/sale/constant.dart';
+import 'package:kuyumcu_stok_v2/view/sale/sale_controller.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_app_bar.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_drawer/my_drawer.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_text_form_field/my_text_form_field.dart';
 
 class SaleScreen extends StatelessWidget {
   SaleScreen({super.key});
@@ -173,11 +167,11 @@ class SaleScreen extends StatelessWidget {
             () => DataTable(
               columns: goldTableColumns,
               rows: goldTableRows,
-              headingRowColor: MaterialStateColor.resolveWith(
+              headingRowColor: WidgetStateColor.resolveWith(
                 (states) => tableHeadingRowColor,
               ),
-              border: TableBorder.symmetric(
-                inside: const BorderSide(
+              border: const TableBorder.symmetric(
+                inside: BorderSide(
                   color: tableBorderColor,
                   width: tableBorderWidth,
                 ),
@@ -266,13 +260,13 @@ class SaleScreen extends StatelessWidget {
           () => Padding(
             padding: currenciesTablePadding,
             child: DataTable(
-              border: TableBorder.symmetric(
+              border: const TableBorder.symmetric(
                 inside: BorderSide(
                   color: tableBorderColor,
                   width: tableBorderWidth,
                 ),
               ),
-              headingRowColor: MaterialStateColor.resolveWith(
+              headingRowColor: WidgetStateColor.resolveWith(
                 (states) => tableHeadingRowColor,
               ),
               columns: currenciesTableColumn,

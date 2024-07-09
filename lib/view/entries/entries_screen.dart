@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
-import '../../model/data/entry.dart';
-<<<<<<< HEAD:lib/view/entries/entries_screen.dart
-import '../../model/enum/my_route.dart';
-import '../../theme/theme_controller.dart';
-=======
-import '../../model/enum/app_route.dart';
-import '../theme/theme_controller.dart';
->>>>>>> new_version:lib/src/view/entries/entries_screen.dart
-import '../widget/date_picker_row/date_picker_row.dart';
-import '../widget/my_app_bar.dart';
-import '../widget/my_drawer/my_drawer.dart';
-import 'constant.dart';
-import 'entries_controller.dart';
+import 'package:kuyumcu_stok_v2/model/data/entry.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
+import 'package:kuyumcu_stok_v2/view/entries/constant.dart';
+import 'package:kuyumcu_stok_v2/view/entries/entries_controller.dart';
+import 'package:kuyumcu_stok_v2/view/widget/date_picker_row/date_picker_row.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_app_bar.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_drawer/my_drawer.dart';
 
 class EntriesScreen extends StatelessWidget {
   EntriesScreen({super.key});

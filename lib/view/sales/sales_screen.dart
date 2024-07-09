@@ -2,21 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-
-import '../../model/data/sale.dart';
-<<<<<<< HEAD:lib/view/sales/sales_screen.dart
-import '../../model/enum/my_route.dart';
-import '../../theme/theme_controller.dart';
-=======
-import '../../model/enum/app_route.dart';
-import '../theme/theme_controller.dart';
->>>>>>> new_version:lib/src/view/sales/sales_screen.dart
-import '../widget/date_picker_row/date_picker_row.dart';
-import '../widget/my_app_bar.dart';
-import '../widget/my_drawer/my_drawer.dart';
-import '../../model/extension/extension_route_name.dart';
-import 'constant.dart';
-import 'sales_controller.dart';
+import 'package:kuyumcu_stok_v2/model/data/sale.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/model/extension/extension_app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
+import 'package:kuyumcu_stok_v2/view/entries/constant.dart';
+import 'package:kuyumcu_stok_v2/view/sales/sales_controller.dart';
+import 'package:kuyumcu_stok_v2/view/widget/date_picker_row/date_picker_row.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_app_bar.dart';
+import 'package:kuyumcu_stok_v2/view/widget/my_drawer/my_drawer.dart';
 
 class SalesScreen extends StatelessWidget {
   SalesScreen({super.key});

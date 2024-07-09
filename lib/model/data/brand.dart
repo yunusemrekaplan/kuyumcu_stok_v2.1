@@ -1,4 +1,4 @@
-import 'package:kuyumcu_stok_v2/src/model/abstracts/abstract_base.dart';
+import 'package:kuyumcu_stok_v2/model/abstracts/abstract_base.dart';
 
 class Brand extends AbstractBase {
   late final String _name;

@@ -1,5 +1,5 @@
-import 'package:kuyumcu_stok_v2/src/model/abstracts/abstract_base.dart';
-import 'package:kuyumcu_stok_v2/src/model/enum/product_type.dart';
+import 'package:kuyumcu_stok_v2/model/abstracts/abstract_base.dart';
+import 'package:kuyumcu_stok_v2/model/enum/product_type.dart';
 
 /// Base class for products.
 abstract class ProductBase extends AbstractBase {

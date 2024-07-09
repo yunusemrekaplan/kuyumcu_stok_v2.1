@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kuyumcu_stok_v2/model/extension/extension_route_name.dart';
+import 'package:kuyumcu_stok_v2/model/extension/extension_app_route.dart';
 
 import '../../../model/enum/app_route.dart';
 import 'constant.dart';

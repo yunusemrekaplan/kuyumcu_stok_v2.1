@@ -1,42 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:kuyumcu_stok_v2/controller/data/db_helper.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/model/extension/extension_app_route.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_controller.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_first.dart';
+import 'package:kuyumcu_stok_v2/theme/theme_sec.dart';
+import 'package:kuyumcu_stok_v2/view/add/add_screen.dart';
+import 'package:kuyumcu_stok_v2/view/calculator/calculator_screen.dart';
+import 'package:kuyumcu_stok_v2/view/entries/entries_screen.dart';
+import 'package:kuyumcu_stok_v2/view/information/gold_screen.dart';
+import 'package:kuyumcu_stok_v2/view/inventory/inventory_screen.dart';
+import 'package:kuyumcu_stok_v2/view/sale/sale_screen.dart';
+import 'package:kuyumcu_stok_v2/view/sales/sales_screen.dart';
+import 'package:kuyumcu_stok_v2/view/search/search_screen.dart';
+import 'package:kuyumcu_stok_v2/window_options.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
-
-<<<<<<< HEAD
-import 'controller/data/db_helper.dart';
-import 'model/extension/extension_route_name.dart';
-import 'model/enum/my_route.dart';
-import 'view/add/add_screen.dart';
-import 'view/calculator/calculator_screen.dart';
-import 'view/entries/entries_screen.dart';
-import 'view/information/gold_screen.dart';
-import 'view/inventory/inventory_screen.dart';
-import 'view/sale/sale_screen.dart';
-import 'view/sales/sales_screen.dart';
-import 'view/search/search_screen.dart';
-import 'theme/theme_controller.dart';
-import 'theme/theme_first.dart';
-import 'theme/theme_sec.dart';
-import 'window_options.dart';
-=======
-import 'src/controller/data/db_helper.dart';
-import 'src/model/extension/extension_route_name.dart';
-import 'src/model/enum/app_route.dart';
-import 'src/view/add/add_screen.dart';
-import 'src/view/calculator/calculator_screen.dart';
-import 'src/view/entries/entries_screen.dart';
-import 'src/view/information/gold_screen.dart';
-import 'src/view/inventory/inventory_screen.dart';
-import 'src/view/sale/sale_screen.dart';
-import 'src/view/sales/sales_screen.dart';
-import 'src/view/search/search_screen.dart';
-import 'src/view/theme/theme_controller.dart';
-import 'src/view/theme/theme_first.dart';
-import 'src/view/theme/theme_sec.dart';
-import 'src/window_options.dart';
->>>>>>> new_version
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

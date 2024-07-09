@@ -1,18 +1,13 @@
 // ignore_for_file: control_flow_in_finally, depend_on_referenced_packages
 
 import 'dart:io';
-<<<<<<< HEAD:lib/controller/data/db_helper.dart
 import 'package:kuyumcu_stok_v2/model/data/log.dart';
+import 'package:kuyumcu_stok_v2/model/enum/log_state.dart';
 import 'package:kuyumcu_stok_v2/model/extension/extension_log_state.dart';
-=======
-import 'package:kuyumcu_stok_v2/src/model/log.dart';
-import 'package:kuyumcu_stok_v2/src/model/extension/extension_log_state.dart';
->>>>>>> new_version:lib/src/controller/data/db_helper.dart
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../../model/enum/log_state.dart';
 import 'constant.dart';
 
 class DbHelper {

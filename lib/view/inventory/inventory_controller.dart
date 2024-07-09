@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD:lib/view/inventory/inventory_controller.dart
-import 'package:kuyumcu_stok_v2/model/enum/my_route.dart';
-=======
-import 'package:kuyumcu_stok_v2/src/model/enum/app_route.dart';
->>>>>>> new_version:lib/src/view/inventory/inventory_controller.dart
-
-import '../../controller/data/gold_db_controller.dart';
-import '../../controller/service/barcode_service.dart';
-import '../../model/data/gold.dart';
-import 'constant.dart';
+import 'package:kuyumcu_stok_v2/controller/data/gold_db_controller.dart';
+import 'package:kuyumcu_stok_v2/controller/service/barcode_service.dart';
+import 'package:kuyumcu_stok_v2/model/data/gold.dart';
+import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
+import 'package:kuyumcu_stok_v2/view/information/constant.dart';
 
 class InventoryController extends GetxController {
   final _goldDbController = GoldDbController();
