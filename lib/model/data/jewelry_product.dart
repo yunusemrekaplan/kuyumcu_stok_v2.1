@@ -1,4 +1,4 @@
-import 'package:kuyumcu_stok_v2/model/abstracts/product_base.dart';
+import 'package:kuyumcu_stok_v2/model/data/abstracts/product_base.dart';
 import 'package:kuyumcu_stok_v2/model/enum/carat.dart';
 import 'package:kuyumcu_stok_v2/model/enum/product_type.dart';
 

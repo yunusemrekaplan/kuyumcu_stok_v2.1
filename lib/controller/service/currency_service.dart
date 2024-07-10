@@ -18,7 +18,9 @@ class CurrencyService {
   Future<bool> getCurrencies() async {
     bool state = true;
     try {
+      print('Getting currencies...');
       final response = await http.get(Uri.parse(haremApi));
+      print('Response status: ${response.statusCode}');
 
       Map data = jsonDecode(response.body);
 
@@ -30,6 +32,8 @@ class CurrencyService {
         'eurBuy': double.parse(data["data"]["EURTRY"]["alis"]),
         'eurSale': double.parse(data["data"]["EURTRY"]["satis"]),
       };
+
+      print(currencies.toString());
     } catch (e) {
       state = false;
       log(e.toString());

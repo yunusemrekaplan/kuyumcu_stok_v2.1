@@ -1,8 +1,8 @@
-import 'package:kuyumcu_stok_v2/model/abstracts/abstract_base.dart';
+import 'package:kuyumcu_stok_v2/model/data/abstracts/abstract_db_base.dart';
 import 'package:kuyumcu_stok_v2/model/enum/product_type.dart';
 
 /// Base class for products.
-abstract class ProductBase extends AbstractBase {
+abstract class ProductBase extends AbstractDbBase {
   /// Name of the product.
   final String _name;
 

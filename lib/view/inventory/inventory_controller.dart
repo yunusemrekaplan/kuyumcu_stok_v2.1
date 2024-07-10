@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kuyumcu_stok_v2/controller/data/gold_db_controller.dart';
 import 'package:kuyumcu_stok_v2/controller/service/barcode_service.dart';
+import 'package:kuyumcu_stok_v2/controller/service/currency_service.dart';
 import 'package:kuyumcu_stok_v2/model/data/gold.dart';
 import 'package:kuyumcu_stok_v2/model/enum/app_route.dart';
 import 'package:kuyumcu_stok_v2/view/information/constant.dart';
@@ -81,6 +82,7 @@ class InventoryController extends GetxController {
   }
 
   Future<void> init() async {
+    await CurrencyService().getCurrencies();
     await getGolds();
     golds = _goldDbController.golds
         .where(

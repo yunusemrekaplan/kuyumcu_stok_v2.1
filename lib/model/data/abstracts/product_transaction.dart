@@ -1,15 +1,15 @@
-import 'package:kuyumcu_stok_v2/model/abstracts/abstract_base.dart';
+import 'package:kuyumcu_stok_v2/model/data/abstracts/abstract_db_base.dart';
 
-/// Abstract class for product processes.
-abstract class ProductProcess extends AbstractBase {
+/// Abstract class for product transaction.
+abstract class ProductTransaction extends AbstractDbBase {
   /// Product ID.
   late final String _productId;
 
-  /// Date and time of the process.
-  late final DateTime _processDate;
+  /// Date and time of the transaction.
+  late final DateTime _transactionDate;
 
-  /// Type of the process.
-  late final String _processType;
+  /// Type of the transaction.
+  late final String _transactionType;
 
   /// Personnel ID.
   late final String _personnelId;
@@ -19,24 +19,24 @@ abstract class ProductProcess extends AbstractBase {
 
   String get productId => _productId;
 
-  DateTime get processDate => _processDate;
+  DateTime get transactionDate => _transactionDate;
 
-  String get processType => _processType;
+  String get transactionType => _transactionType;
 
   String get personnelId => _personnelId;
 
   double get fineGoldValue => _fineGoldValue;
 
-  ProductProcess({
+  ProductTransaction({
     required String id,
     required String productId,
-    required DateTime processDate,
-    required String processType,
+    required DateTime transactionDate,
+    required String transactionType,
     required String personnelId,
     required double fineGoldValue,
   })  : _productId = productId,
-        _processDate = processDate,
-        _processType = processType,
+        _transactionDate = transactionDate,
+        _transactionType = transactionType,
         _personnelId = personnelId,
         _fineGoldValue = fineGoldValue,
         super(id: id, createdAt: DateTime.now());
@@ -46,17 +46,17 @@ abstract class ProductProcess extends AbstractBase {
     return super.toMap()
       ..addAll({
         'productId': _productId,
-        'processDate': _processDate.toIso8601String(),
-        'processType': _processType,
+        'transactionDate': _transactionDate.toIso8601String(),
+        'transactionType': _transactionType,
         'personnelId': _personnelId,
         'fineGoldValue': _fineGoldValue,
       });
   }
 
-  ProductProcess.fromMap(Map<String, dynamic> map)
+  ProductTransaction.fromMap(Map<String, dynamic> map)
       : _productId = map['productId'],
-        _processDate = DateTime.parse(map['processDate']),
-        _processType = map['processType'],
+        _transactionDate = DateTime.parse(map['transactionDate']),
+        _transactionType = map['transactionType'],
         _personnelId = map['personnelId'],
         _fineGoldValue = map['fineGoldValue'],
         super.fromMap(map);

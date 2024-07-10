@@ -1,6 +1,6 @@
-import 'package:kuyumcu_stok_v2/model/abstracts/abstract_base.dart';
+import 'package:kuyumcu_stok_v2/model/data/abstracts/abstract_db_base.dart';
 
-class Brand extends AbstractBase {
+class Brand extends AbstractDbBase {
   late final String _name;
 
   String get name => _name;

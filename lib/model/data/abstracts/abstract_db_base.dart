@@ -1,5 +1,5 @@
 /// Base class for all data classes
-abstract class AbstractBase {
+abstract class AbstractDbBase {
   /// Unique identifier of the object.
   late final String _id;
 
@@ -25,7 +25,7 @@ abstract class AbstractBase {
 
   int get isDeleted => _isDeleted;
 
-  AbstractBase({
+  AbstractDbBase({
     required String id,
     required DateTime createdAt,
     DateTime? updatedAt,
@@ -45,7 +45,7 @@ abstract class AbstractBase {
     };
   }
 
-  AbstractBase.fromMap(Map<String, dynamic> map) {
+  AbstractDbBase.fromMap(Map<String, dynamic> map) {
     _id = map['id'];
     _createdAt = DateTime.parse(map['createdAt']);
     _updatedAt =
