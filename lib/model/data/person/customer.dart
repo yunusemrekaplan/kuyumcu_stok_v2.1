@@ -7,7 +7,7 @@ class Customer extends AbstractDbBase {
   String? phone;
   String? email;
   String? address;
-  late List<String> productSalesIds;
+  List<String>? productSalesIds;
 
   Customer({
     required super.id,

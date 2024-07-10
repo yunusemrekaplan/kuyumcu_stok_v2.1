@@ -6,5 +6,36 @@ class Employee extends AbstractDbBase {
   String? phone;
   String? email;
   String? address;
-  late List<String> productSalesIds;
+
+  Employee({
+    required super.id,
+    required super.createdAt,
+    required this.name,
+    this.surname,
+    this.phone,
+    this.email,
+    this.address,
+    super.updatedAt,
+    super.deletedAt,
+  });
+
+  @override
+  Map<String, dynamic> toMap() {
+    return super.toMap()
+      ..addAll({
+        'name': name,
+        'surname': surname,
+        'phone': phone,
+        'email': email,
+        'address': address,
+      });
+  }
+
+  Employee.fromMap(Map<String, dynamic> map)
+      : name = map['name'],
+        surname = map['surname'],
+        phone = map['phone'],
+        email = map['email'],
+        address = map['address'],
+        super.fromMap(map);
 }
